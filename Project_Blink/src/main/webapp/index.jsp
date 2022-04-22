@@ -1,74 +1,69 @@
-<%@page import="data.dao.TestDao"%>
-<%@page import="data.dto.TestDto"%>
-<%@page import="java.util.List"%>
-
-<%@page import="java.text.SimpleDateFormat"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="font-size: 16px;">
 <head>
-<meta charset="UTF-8">
+<title>모아 모아 공모아</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Yeon+Sung&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<title>Insert title here</title>
+<link rel="stylesheet" href="default.css" media="screen">
+<script class="u-script" type="text/javascript" src="script.js" defer=""></script>
+
 <style type="text/css">
-div.list {
-	padding-top: 50px;
-	font-family: 'Noto Sans KR';
-	display: flex;
-	justify-content: center;
+html, body {
+	height: 100%
 }
 
-tr>th {
-	text-align: center;
+div.layout {
+	border: 0px solid gray;
+	position: absolute;
 }
 
+div.title {
+	width: 60%;
+	left: 325px;
+	height: 100px;
+	margin: 50px 0px;
+	align-content: center;
+}
+
+div.info {
+	height: 0px;
+	width: 100%;
+	position: absolute;
+	bottom: -50;
+}
+
+div.main {
+	width: 60%;
+	background-color: #fff;
+	left: 300px;
+	top: 150px;
+	position: relative;
+	min-height: 120%;
+	padding-bottom: 250px;
+}
 </style>
-</head>
-<body>
-
 <%
-	TestDao dao=new TestDao();
-	SimpleDateFormat sdf=new SimpleDateFormat("yy.MM.dd HH:mm");
-	
-	// 각 페이지에서 필요한 게시글 가져오기
-	List<TestDto> list=dao.getAllData();
+String root = request.getContextPath();
+String mainPage = "layout/main.jsp";
 
+// url을 통해 main값을 읽어 mainPage에 출력
+if (request.getParameter("main") != null) {
+	mainPage = request.getParameter("main");
+}
 %>
-
-<div class="list">
-<table class="table table-hover" style="width: 800px;">
-	<caption>2조 팀원 목록&nbsp;<span class="badge">총 <%=list.size() %>명</span>&nbsp;</caption>
-	
-	<tr align="center">
-		<th width="75">No</th>
-		<th width="120">이름</th>
-		<th width="150">Github</th>
-		<th width="75">등록일</th>
-	</tr>
-	<% if(list.size()==0) {
-		%>
-		<tr>
-			<td colspan="8" align="center">
-			<b>등록된 인원이 없습니다.</b>
-			</td>
-		</tr>
-	<% } else {
-			for(TestDto dto:list) {
-		%>
-		<tr>
-			<td align="center"><%=dto.getNum() %></td>
-			<td align="center"><%=dto.getName() %></td>
-			<td align="center"><%=dto.getGitname() %></td>
-			<td align="center"><%=sdf.format(dto.getStartday()) %></td>
-		</tr>
-		<% }
-	}%>
-	</table>
-</div>
-
+</head>
+<body style="background-color: #B4FFFF;">
+	<div class="layout title">
+		<jsp:include page="layout/title.jsp" />
+	</div>	
+	<div class="layout main">
+		<jsp:include page="<%=mainPage%>" />
+	</div>
+	<div class="layout info">
+		<jsp:include page="layout/info.jsp" />
+	</div>
 </body>
 </html>
