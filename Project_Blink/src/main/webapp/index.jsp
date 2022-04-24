@@ -21,8 +21,8 @@ div.layout {
 }
 
 div.title {
-	width: 60%;
-	left: 325px;
+	width: 55%;
+	left: 425px;
 	height: 100px;
 	margin: 50px 0px;
 	align-content: center;
@@ -36,9 +36,9 @@ div.info {
 }
 
 div.main {
-	width: 60%;
+	width: 55%;
 	background-color: #fff;
-	left: 300px;
+	left: 400px;
 	top: 150px;
 	position: relative;
 	min-height: 120%;
