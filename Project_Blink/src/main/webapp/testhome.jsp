@@ -15,6 +15,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+
 div.list {
 	padding-top: 50px;
 	font-family: 'Noto Sans KR';
@@ -34,14 +35,12 @@ tr>th {
 	TestDao dao=new TestDao();
 	SimpleDateFormat sdf=new SimpleDateFormat("yy.MM.dd HH:mm");
 	
-	// 각 페이지에서 필요한 게시글 가져오기
 	List<TestDto> list=dao.getAllData();
-
 %>
-
+<!-- 해당 페이지는 출력 확인용 입니다. -->
 <div class="list">
-<table class="table table-hover" style="width: 800px;">
-	<caption>2조 팀원 목록 김효림 수정하기&nbsp;<span class="badge">총 <%=list.size() %>명</span>&nbsp;</caption>
+<table class="table table-hover" style="width: 800px; height: 300px;">
+	<caption>2조 팀원 목록&nbsp;<span class="badge">총 <%=list.size() %>명</span>&nbsp;</caption>
 	
 	<tr align="center">
 		<th width="75">No</th>

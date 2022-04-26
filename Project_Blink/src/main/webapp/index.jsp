@@ -3,67 +3,75 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
 <head>
-<title>모아 모아 공모아</title>
+<title>공모전을 모아 모아, 공모아</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Yeon+Sung&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet" href="default.css" media="screen">
-<script class="u-script" type="text/javascript" src="script.js" defer=""></script>
-
 <style type="text/css">
 html, body {
-	height: 100%
+	height: 100%;
+	background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
+	background-attachment: fixed;
+	font-family: 'Noto Sans KR';
 }
 
 div.layout {
 	border: 0px solid gray;
-	position: absolute;
 }
 
-div.title {
-	width: 55%;
-	left: 425px;
-	height: 100px;
-	margin: 50px 0px;
-	align-content: center;
-}
-
-div.info {
-	height: 0px;
-	width: 100%;
-	position: absolute;
-	bottom: -50;
-}
-
-div.main {
-	width: 55%;
-	background-color: #fff;
-	left: 400px;
-	top: 150px;
+div.header {
 	position: relative;
-	min-height: 120%;
-	padding-bottom: 250px;
+	width: 1100px;
+	height: 7%;
+	margin: 0 auto;
+	top: 2%;
 }
+
+div.container {
+	display: flex;
+	justify-content:center;
+	overflow: visible;
+	position: relative;
+	background-color: #fff;
+	width: 1100px;
+	padding-bottom: 50px;
+	margin: 0 auto;
+	height: 100%;
+	top: 3%;
+	min-height: 100%;
+}
+
+div.footer {
+	position: absolute;
+	background-color: #333333;
+	height: 150px;
+	margin-top: 100px;
+	width: 100%;
+}
+
 </style>
 <%
-String root = request.getContextPath();
-String mainPage = "layout/main.jsp";
-
-// url을 통해 main값을 읽어 mainPage에 출력
-if (request.getParameter("main") != null) {
-	mainPage = request.getParameter("main");
-}
+	String root = request.getContextPath();
+	String mainPage = "layout/container.jsp";
+	
+	if (request.getParameter("container") != null) {
+		mainPage = request.getParameter("container");
+	}
 %>
 </head>
-<body style="background-color: #B4FFFF;">
-	<div class="layout title">
-		<jsp:include page="layout/title.jsp" />
+
+<body>
+<!-- header: logo, menu -->
+	<div class="layout header">
+		<jsp:include page="layout/header.jsp" />
 	</div>	
-	<div class="layout main">
+<!-- container -->
+	<div class="layout container">
 		<jsp:include page="<%=mainPage%>" />
 	</div>
-	<div class="layout info">
-		<jsp:include page="layout/info.jsp" />
+<!-- footer -->
+	<div class="layout footer">
+		<jsp:include page="layout/footer.jsp" />
 	</div>
 </body>
 </html>
