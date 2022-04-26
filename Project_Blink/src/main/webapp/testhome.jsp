@@ -38,7 +38,7 @@ tr>th {
 	List<TestDto> list=dao.getAllData();
 %>
 <!-- 해당 페이지는 출력 확인용 입니다. -->
-<div class="list">
+<div class="list" id="main">
 <table class="table table-hover" style="width: 800px; height: 300px;">
 	<caption>2조 팀원 목록&nbsp;<span class="badge">총 <%=list.size() %>명</span>&nbsp;</caption>
 	

@@ -7,6 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Yeon+Sung&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+/* container의 내용의 높이에 따라 div.container 높이 자동 조절 */
+function funLoad(){
+	var childHeight = $("#main").height()+100;
+	//alert(childHeight);		// (영역 높이+100) 값 출력
+    $('div.container').css({'height':childHeight+'px'});
+}
+window.onload = funLoad;
+window.onresize = funLoad;
+</script>
 <style type="text/css">
 html, body {
 	height: 100%;
@@ -28,24 +38,20 @@ div.header {
 }
 
 div.container {
-	display: flex;
-	justify-content:center;
 	overflow: visible;
 	position: relative;
 	background-color: #fff;
 	width: 1100px;
-	padding-bottom: 50px;
 	margin: 0 auto;
-	height: 100%;
 	top: 3%;
-	min-height: 100%;
+	padding-left: 50px;
 }
 
 div.footer {
 	position: absolute;
 	background-color: #333333;
 	height: 150px;
-	margin-top: 100px;
+	margin-top: 80px;
 	width: 100%;
 }
 
@@ -66,6 +72,7 @@ div.footer {
 		<jsp:include page="layout/header.jsp" />
 	</div>	
 <!-- container -->
+<!-- CAUTION: body에 표현되는 모든 콘텐츠는 반드시 <div id="main"></div> 내에 포함시킬 것 -->
 	<div class="layout container">
 		<jsp:include page="<%=mainPage%>" />
 	</div>
