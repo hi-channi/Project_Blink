@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -81,6 +83,10 @@ a:
 
 </style>
 </head>
+<%
+	String loginOk=(String)session.getAttribute("loginOk");
+	String loginId=(String)session.getAttribute("loginId");
+%>
 <body>
 <!-- 로고 영역 -->
 <div class="logoimg">
@@ -105,17 +111,27 @@ a:
     <li>
       <a href="#">공모전 후기</a>
     </li>
-    <li>
-      <a href="index.jsp?container=testhome.jsp">마이페이지</a>
-    </li>
-    <li>
-      <a href="#" class="login">로그인</a>
-    </li>
+	<%
+		// 로그인 상태: 마이페이지, 비로그인 상태: 회원가입
+		if (loginOk == null || loginOk.equals("")) {
+		%>
+		<li>
+			<a href="index.jsp?container=member/signup.jsp">회원가입</a>
+		</li>
+		<li>
+      		<a href="login/login.jsp" class="login">로그인</a>
+		</li>
+		<% } else {
+		%>
+		<li>
+      		<a href="login/logoutproc.jsp" class="login">로그아웃</a>
+		</li>
+		<% }
+	%>
     <li>
     	<span style="padding: 7px;"></span>
     </li>
   </ul>
 </nav>
-
 </body>
 </html>
