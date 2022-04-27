@@ -32,7 +32,7 @@ div.layout {
 div.header {
 	position: relative;
 	width: 1100px;
-	height: 7%;
+	height: 87px;
 	margin: 0 auto;
 	top: 2%;
 }
@@ -72,7 +72,7 @@ div.footer {
 		<jsp:include page="layout/header.jsp" />
 	</div>	
 <!-- container -->
-<!-- CAUTION: body에 표현되는 모든 콘텐츠는 반드시 <div id="main"></div> 내에 포함시킬 것 -->
+<!-- CAUTION: body에 표현되는 모든 콘텐츠는 반드시 <div id="main"></div> 내에 포함시켜 적정 height 값 부여할 것 -->
 	<div class="layout container">
 		<jsp:include page="<%=mainPage%>" />
 	</div>

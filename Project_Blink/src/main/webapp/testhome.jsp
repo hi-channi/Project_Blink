@@ -19,8 +19,7 @@
 div.list {
 	padding-top: 50px;
 	font-family: 'Noto Sans KR';
-	display: flex;
-	justify-content: center;
+	text-align: center;
 }
 
 tr>th {
