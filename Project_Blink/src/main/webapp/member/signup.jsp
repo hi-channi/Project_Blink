@@ -189,7 +189,7 @@ body {
 <!-- <img src="../img/logo2.png" > -->
 </div>
 <!-- 입력 form -->
-<div id="main" style="height: 1200px;'">
+<div id="main" style="height: 1000px;'">
 	<form action="member/memberInsert.jsp" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
 
 		<h2>회원가입</h2>
@@ -199,36 +199,29 @@ body {
 			<input type="radio" value="기업회원" name="Member_type">기업회원
 		</div>
 		<div class="textForm">
-			<input name="name" type="text" class="name" placeholder="이름">
+			<input name="email" type="text" class="email" placeholder="이메일">
 		</div>
-
-		<div class="textForm">
-			<input name="nickname" type="text" class="nickname"
-				placeholder="닉네임">
-		</div>
-
 		<div class="textForm">
 			<input name="pw" type="password" class="pw" placeholder="비밀번호">
 		</div>
-
 		<div class="textForm">
 			<input name="pwconfirm" type="password" class="pw"
 				placeholder="비밀번호 확인">
 		</div>
-
+		<div class="textForm">
+			<input name="name" type="text" class="name" placeholder="이름">
+		</div>
+		<div class="textForm">
+			<input name="nickname" type="text" class="nickname"
+				placeholder="닉네임">
+		</div>
 		<div class="textForm">
 			<input name="contact" type="number" class="contact"
 				placeholder="전화번호">
 		</div>
-
 		<div class="textForm">
 			<input name="addr" type="text" class="addr" placeholder="주소">
 		</div>
-
-		<div class="textForm">
-			<input name="email" type="text" class="email" placeholder="이메일">
-		</div>
-
 		<div class="textForm">
 			<input name="company" type="text" class="company" placeholder="소속">
 		</div>

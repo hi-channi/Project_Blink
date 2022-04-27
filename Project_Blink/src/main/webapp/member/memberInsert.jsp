@@ -50,7 +50,7 @@
 	dao.insertMember(dto);
 	System.out.println("[회원가입 성공]");
 	
-	response.sendRedirect("../index.jsp?container=member/memberSuccess.jsp?name="+name);
+	response.sendRedirect("../index.jsp?container=member/memberSuccess.jsp?email="+email);
 %>
 </body>
 </html>

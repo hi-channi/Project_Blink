@@ -13,6 +13,7 @@
 <style type="text/css">
 
 .btn {
+	border: solid 1px gray;
   position:relative;
   left:40%;
   transform: translateX(-50%);
@@ -24,7 +25,7 @@
   background-size: 200%;
   color:white;
   font-weight: bold;
-  border:none;
+
   cursor:pointer;
   transition: 0.4s;
   display:inline;
@@ -37,27 +38,19 @@ b{text-align: center;}
 <body>
 <div id="main" style="height: 700px;">
 <%
-	request.setCharacterEncoding("utf-8");
-
-	String loginOk=(String)session.getAttribute("loginOk");
-
-	if(loginOk==null) {	
-		%>
-		<button class="btn" style="width: 120px; margin-left: 100px;" onclick="location.href=''">로그인</button>
-	<% } else {
-		LoginDao dao=new LoginDao();
-		// 세션에 저장된 아이디 얻기
-		String loginId=(String)session.getAttribute("loginId");
-		String name=dao.getName(loginId);
-	%>
-	<div class="intro">
-		<b><%=name %>님 환영합니다.</b>
-		<br>
-		<br>
-		<button type="button" class="btn" style="width: 120px; margin-left: 30px;" onclick="location.href='index.jsp?main=login/logoutaction.jsp'">로그아웃</button>
-	</div>
-	<%} 
+	String loginId=request.getParameter("email");
+	LoginDao dao=new LoginDao();
+	// 세션에 저장된 아이디 얻기
+	String name=dao.getName(loginId);
 %>
+	<div class="intro">
+		<b><%=name %>님,</b>
+		회원가입을 축하합니다.
+		<br>
+		<br>
+		<button type="button" class="btn" style="width: 120px; margin-left: 30px;" onclick="location.href='login/login.jsp'">로그인</button>
+	</div>
+
 
 </div>
 <!-- <div style="margin: 0 auto; width: 100%">

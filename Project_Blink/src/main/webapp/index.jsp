@@ -75,8 +75,8 @@ div.footer {
 	position: absolute;
 	width: 130px;
 	height: 200px;
-	top: 205px;
-	left: 1580px;
+	top: 80px;
+	left: 1120px;
 	text-align: center;
 	color: rgba(0, 35, 122, 0.7);
 	background: linear-gradient(0deg, rgba(255, 255, 255, 0.0) 0%,
@@ -129,12 +129,7 @@ div.bannermenu:hover {
 <!-- CAUTION: body에 표현되는 모든 콘텐츠는 반드시 <div id="main"></div> 내에 포함시켜 적정 height 값 부여할 것 -->
 	<div class="layout container">
 		<jsp:include page="<%=mainPage%>" />
-	</div>
-<!-- footer -->
-	<div class="layout footer">
-		<jsp:include page="layout/footer.jsp" />
-	</div>
-	<%
+		<%
 	// 로그인 상태일 경우 플로팅 배너 노출
 	if (loginOk == null || loginOk.equals("")) {
 	} else {
@@ -152,5 +147,11 @@ div.bannermenu:hover {
 		</div>
 	<% }
 	%>
+	</div>
+<!-- footer -->
+	<div class="layout footer">
+		<jsp:include page="layout/footer.jsp" />
+	</div>
+	
 </body>
 </html>
