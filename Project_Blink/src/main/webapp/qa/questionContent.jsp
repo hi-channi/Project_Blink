@@ -48,7 +48,7 @@ $(function(){
 			
 			type:"get",
 			dataType:"html",
-			url:"answerDelete.jsp",
+			url:"qa/answerDelete.jsp",
 			data:{"anum":anum},
 			success:function(){
 			
@@ -115,7 +115,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			
 			<div class="answer">
 				<div class="answerform">
-				 <form action="answerAction.jsp" method="post">
+				 <form action="qa/answerAction.jsp" method="post">
 				 <!-- hidden -->
 				 <input type="hidden" name="qnum" value="<%=dto.getQnum()%>">
 				 <%//현재로그인한 아이디 %>

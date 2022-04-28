@@ -25,7 +25,7 @@ AnswerDao dao=new AnswerDao();
 dao.insertAnswer(dto);
 
 //보던페이지로 이동
-response.sendRedirect("questionContent.jsp?qnum="+qnum2);
+response.sendRedirect("../index.jsp?container=qa/questionContent.jsp?qnum="+qnum2);
 %>
 
 

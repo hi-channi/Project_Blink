@@ -29,6 +29,8 @@ $(function(){
 </script>
 </head>
 <body>
+<div id="main" style="height: 100%; width:100%;" >
+
 <%
 //DB선언후 List를 가져옴
 QuestionDao db = new QuestionDao();
@@ -165,6 +167,7 @@ no=totalCount-(currentPage-1)*perPage;
   	%>
   	
   </ul>
+</div>
 </div>
 
 </body>
