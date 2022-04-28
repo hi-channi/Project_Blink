@@ -1,3 +1,5 @@
+<%@page import="data.dao.MemberDao"%>
+<%@page import="data.dao.CommentDao"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="data.dto.ReviewDto"%>
 <%@page import="data.dao.ReviewDao"%>
@@ -47,6 +49,8 @@ $(function(){
 </script>
 </head>
 <%
+String loginid=(String)session.getAttribute("loginId");
+
 String rnum=request.getParameter("rnum");
 ReviewDao dao=new ReviewDao();
 //조회수증가
@@ -55,6 +59,13 @@ dao.updateReadCount(rnum);
 ReviewDto dto=dao.getData(rnum);
 
 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+//각방명록에 달린 댓글 목록 가져오기
+MemberDao mdao=new MemberDao();
+String myid=mdao.getId(loginid);
+//System.out.println(loginid);
+//System.out.println(myid);
+dto.setId(myid);
 %>
 <body>
 <table class="table table-condensed" style="width: 650px;">
@@ -73,7 +84,16 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			<b style="color:gray; font-size: 9pt;">조회 <%=dto.getRead_cnt() %></b>
 				<b style="color:gray; font-size: 9pt;">추천 <%=dto.getLike_cnt() %></b>
 				<span style="color:gray; font-size:9pt;">
-				<%=dto.getId() %></span>
+				<%
+	       		    //작성자명 얻기
+	       		    String Id=dto.getId();
+	       		   	//System.out.println(Id);	       		    	 
+	       		    String nickname=mdao.getNickname(dto.getId());
+	       		   //System.out.println(nickname);
+	       		    	 
+	       		     
+	       		    %><br>
+	       		   <b><%=nickname %></b>&nbsp;</span>
 		</tr>
 		<tr>
 		<td colspan="2">

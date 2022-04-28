@@ -27,8 +27,8 @@ dto.setContent(request.getParameter("content"));
 
 MemberDao mdao=new MemberDao();
 String myid=mdao.getId(loginId);
-System.out.println(loginId);
-System.out.println(myid);
+//System.out.println(loginId);
+//System.out.println(myid);
 dto.setId(myid);
 
 CommunityDao dao=new CommunityDao();

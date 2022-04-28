@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@page import="data.dto.ReviewDto"%>
 <%@page import="data.dao.ReviewDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -24,7 +25,8 @@ span.day{
 </head>
 <body>
 <%
-ReviewDao db=new ReviewDao();
+ReviewDao dao=new ReviewDao();
+
 
 // 페이징처리에 필요한 변수
 int totalCount; //총 글수
@@ -38,7 +40,7 @@ int currentPage; //현재페이지
 
 int no;
 //총갯수
-totalCount=db.getTotalCount();
+totalCount=dao.getTotalCount();
 
 //현재 페이지번호 읽기(단 null일 경우는 1page로 설정)
 if(request.getParameter("cuttentPage")==null)
@@ -63,7 +65,7 @@ if(endPage>totalPage)
 start=(currentPage-1)*perPage;
 
 //각 페이지에서 필요한 게시글 가져오기
-List<ReviewDto> list=db.getList(start, perPage);
+List<ReviewDto> list=dao.getList(start, perPage);
 
 //각 글앞에 붙일 시작번호 구하기
 //총 글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
@@ -94,7 +96,15 @@ no=totalCount-(currentPage-1)*perPage;
 		<%
 		//출력할 날짜 형식
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		ReviewDao dao=new ReviewDao();
+		String loginid=(String)session.getAttribute("loginId");
+		
+		
+		MemberDao mdao=new MemberDao();		
+		
+		String myid=mdao.getId(loginid);
+		//System.out.println(loginid);
+		//System.out.println(myid);
+		
 		
 		for(ReviewDto dto:list)
 		{
@@ -112,7 +122,11 @@ no=totalCount-(currentPage-1)*perPage;
 				<%=dto.getSubject() %></a>
 			</td>
 			<!-- 작성자 -->
-			<td><%=dto.getId() %></td>
+			<td> <%
+    		  String getid=dto.getId();
+    		  String nickname=mdao.getNickname(getid);    		  
+    		  %>
+    		  <%=nickname%></td>
 			<!-- 작성일 -->
 			<td><%=sdf.format(dto.getWrite_day()) %></td>
 			<!-- 조회수 -->

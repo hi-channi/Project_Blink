@@ -20,16 +20,16 @@ public class ReviewDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="insert into review (subject,content,image,link,write_day) values (?,?,?,?,now())";
+		String sql="insert into review (id,subject,content,image,link,write_day) values (?,?,?,?,?,now())";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
 			//바인딩
-			
-			pstmt.setString(1, dto.getSubject());
-			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getImage());
-			pstmt.setString(4, dto.getLink());
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getImage());
+			pstmt.setString(5, dto.getLink());
 			//실행
 			pstmt.execute();
 			 

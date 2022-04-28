@@ -22,7 +22,7 @@
 $(function(){
 	
 	//추천누르면 1증가
-	$("span.likes").click(function(){
+	$("button.likes").click(function(){
 		
 		var bnum=$(this).attr("bnum");
 		var tag=$(this);
@@ -126,10 +126,10 @@ dto.setId(myid);
 
 %>
 <body>
-<table class="table table-condensed" style="width: 650px;">
+<table class="table table-condensed" style="width: 1000px;">
   <caption><b>내용보기</b></caption>
     <tr>
-      <td style="width: 500px;">
+      <td style="width: 700px;">
          <b><%=dto.getSubject() %></b>
       </td>
       <td>
@@ -137,7 +137,7 @@ dto.setId(myid);
          <%=sdf.format(dto.getWrite_day()) %>
          &nbsp;&nbsp; 조회<%=dto.getRead_cnt() %>  
          </span>
-         <b style="color:gray; font-size: 9pt;">추천 <%=dto.getLike_cnt() %></b>
+        <b style="color:gray; font-size: 9pt;">추천 <%=dto.getLike_cnt() %></b>
       </td>
     </tr>
     
@@ -162,7 +162,7 @@ dto.setId(myid);
   <button type="button" class="btn btn-default"
   onclick="location.href='index.jsp?container=community/delete.jsp?bnum=<%=bnum%>&currentPage=<%=currentPage%>'">삭제</button>
   	<button type="button" class="btn btn-default likes"
-	bnum="<%=dto.getBnum()%>">추천하기</button>
+	 bnum="<%=dto.getBnum()%>">추천하기</button>
 	<span class="like_cnt"><%=dto.getLike_cnt() %></span>
 	<span class="glyphicon glyphicon-heart" style="color: red; font-size: 0px;"></span>
 </div>

@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@page import="data.dao.ReviewDao"%>
 <%@page import="data.dto.ReviewDto"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
@@ -18,6 +19,11 @@
 <body>
 <%
 request.setCharacterEncoding("utf-8");
+
+String loginId=(String)session.getAttribute("loginId");
+
+
+
 //톰캣 업로드 경로
 String realFolder=getServletContext().getRealPath("/save");
 System.out.println(realFolder);
@@ -41,16 +47,27 @@ multi=new MultipartRequest(request,realFolder,uploadSize,"utf-8",
 
 	//dto에 담기
 	ReviewDto dto=new ReviewDto();
+	ReviewDao dao=new ReviewDao();
+	MemberDao mdao=new MemberDao();
+		
+	String myid=mdao.getId(loginId);
 	
 	dto.setSubject(subject);
 	dto.setContent(content);
 	dto.setLink(link);
 	dto.setImage(image);
 	System.out.println(image);
-	//db선언
-	ReviewDao dao=new ReviewDao();
 	
-	//insert호출
+	dto.setId(myid);
+	
+	
+	
+	
+	System.out.println(loginId);
+	System.out.println(myid);
+	dto.setId(myid);
+	
+
 	dao.insertReview(dto);
 	
 	//목록으로 이동
