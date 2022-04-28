@@ -103,7 +103,7 @@ a:
       <a href="#">공모전</a>
     </li>
     <li>
-      <a href="#">Q&A</a>
+      <a href="index.jsp?container=qa/qaMain.jsp">Q&A</a>
     </li>
     <li>
       <a href="#">커뮤니티</a>

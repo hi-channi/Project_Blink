@@ -20,7 +20,7 @@ $(function(){
 	//문의사항 입력 ...questionform.jsp
 	$("#btnquestion").click(function(){
 		
-		window.open("questionForm.jsp","","width=550px,height=500px,left=500px,top=100px");
+		window.open("qa/questionForm.jsp","","width=550px,height=500px,left=500px,top=100px");
 	});
 	
 });
@@ -113,7 +113,7 @@ no=totalCount-(currentPage-1)*perPage;
 		 
 		 <!-- 제목.. 내용보기로 연결 -->
 		 <td>
-		 <a href="questionContent.jsp?qnum=<%=dto.getQnum()%>"><%=dto.getSubject() %></a>
+		 <a href="index.jsp?container=qa/questionContent.jsp?qnum=<%=dto.getQnum()%>"><%=dto.getSubject() %></a>
 		 </td>
 		 
 		 <!-- 작성자 -->
@@ -137,7 +137,7 @@ no=totalCount-(currentPage-1)*perPage;
   	if(startPage>1)
   	{%>
   		<li>
-  		  <a href="questionList.jsp?currentPage=<%=startPage-1%>">이전</a>
+  		  <a href="index.jsp?container=qa/questionList.jsp?currentPage=<%=startPage-1%>">이전</a>
   		</li>
   	<%}
   	
@@ -146,11 +146,11 @@ no=totalCount-(currentPage-1)*perPage;
   		if(pp==currentPage)
   		{%>
   			<li class="active">
-  			  <a href="questionList.jsp?currentPage=<%=pp%>"><%=pp %></a>
+  			  <a href="index.jsp?container=qa/questionList.jsp?currentPage=<%=pp%>"><%=pp %></a>
   			</li>
   		<%}else{%>
   			<li >
-  			  <a href="questionList.jsp?currentPage=<%=pp%>"><%=pp %></a>
+  			  <a href="index.jsp?container=qa/questionList.jsp?currentPage=<%=pp%>"><%=pp %></a>
   			</li>
   		<%}
   	}
@@ -159,7 +159,7 @@ no=totalCount-(currentPage-1)*perPage;
   	if(endPage<totalPage)
   	{%>
   		<li>
-  		  <a href="questionList.jsp?currentPage=<%=endPage+1%>">다음</a>
+  		  <a href="index.jsp?container=qa/questionList.jsp?currentPage=<%=endPage+1%>">다음</a>
   		</li>
   	<%}
   	%>

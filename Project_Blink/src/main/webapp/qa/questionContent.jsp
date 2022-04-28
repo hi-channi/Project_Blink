@@ -177,11 +177,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	<button type="button" class="btn btn-info" 
 	id="btnquestion">질문하기</button>
 	<button type="button" class="btn btn-info" 
-	onclick="location.href='questionList.jsp'">목록</button>
+	onclick="location.href='index.jsp?container=qa/questionList.jsp'">목록</button>
 	<button type="button" class="btn btn-info" 
-	onclick="location.href='questionUpdateForm.jsp?qnum=<%=qnum%>'">수정</button>
+	onclick="location.href='index.jsp?container=qa/questionUpdateForm.jsp?qnum=<%=qnum%>'">수정</button>
 	<button type="button" class="btn btn-info" 
-	onclick="location.href='questionDeleteForm.jsp?qnum=<%=qnum%>'">삭제</button>
+	onclick="location.href='index.jsp?container=qa/questionDeleteForm.jsp?qnum=<%=qnum%>'">삭제</button>
 </div>
 
 

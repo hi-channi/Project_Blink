@@ -13,7 +13,7 @@
 <%
 String qnum = request.getParameter("qnum");
 %>
-<form action="questionDeleteAction.jsp" method="post">
+<form action="qa/questionDeleteAction.jsp" method="post">
 	<table class="table table-bordered" style="width:200px;">
 	<caption><b>정말로 삭제하시겠습니까?</b></caption>
 	<tr>

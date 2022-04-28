@@ -21,7 +21,7 @@ QuestionDao db = new QuestionDao();
 db.deleteQuestion(qnum);
 
 //리스트로 이동
-response.sendRedirect("questionList.jsp");
+response.sendRedirect("index.jsp?container=qa/questionList.jsp");
 %>
 
 

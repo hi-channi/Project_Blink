@@ -84,8 +84,15 @@ $(function(){
 
 <tr>
 <button type="button" class="btn btn-info btn-md"
+onclick="location.href='index.jsp?container=qa/questionList.jsp'">Q&A목록</button>
+</tr>
+
+<tr>
+<button type="button" class="btn btn-info btn-md"
 id="btnquestion">질문하기</button>
 </tr>
+
+
 
 </div>
 </body>

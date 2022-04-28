@@ -25,7 +25,7 @@ QuestionDto dto = dao.getData(qnum);
 
 <body>
 
-<form action="questionUpdateAction.jsp" method="post"
+<form action="qa/questionUpdateAction.jsp" method="post"
 enctype="multipart/form-data">
 	<table class="table table-bordered" style="width:500px;">
 
@@ -58,7 +58,7 @@ enctype="multipart/form-data">
 		<input type="hidden" name="qnum" value="<%=qnum%>">		
 		<button type="submit" class="btn btn-info btn-md">수정하기</button>
 		<button type="button" class="btn btn-info btn-md"
-		onclick='window.close()'>창 닫기</button>
+		onclick="history.back()">취소하기</button>
 		</td>
 		</tr>
 		
