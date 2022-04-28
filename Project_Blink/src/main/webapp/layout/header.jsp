@@ -106,10 +106,10 @@ a:
       <a href="#">Q&A</a>
     </li>
     <li>
-      <a href="#">커뮤니티</a>
+      <a href="index.jsp?container=community/communitylist.jsp">커뮤니티</a>
     </li>
     <li>
-      <a href="#">공모전 후기</a>
+      <a href="index.jsp?container=review/reviewlist.jsp">공모전 후기</a>
     </li>
 	<%
 		// 로그인 상태: 마이페이지, 비로그인 상태: 회원가입

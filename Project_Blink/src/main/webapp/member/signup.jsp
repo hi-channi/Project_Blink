@@ -189,7 +189,7 @@ body {
 <!-- <img src="../img/logo2.png" > -->
 </div>
 <!-- 입력 form -->
-<div id="main" style="height: 1000px;'">
+<div id="main" style="height: 1000px;">
 	<form action="member/memberInsert.jsp" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
 
 		<h2>회원가입</h2>

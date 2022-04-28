@@ -125,7 +125,7 @@ h2 {
 	System.out.println(idSaveChk+loginId);
 %>
 	<form action="loginproc.jsp" method="post">
-		<div class="wrap">
+		<div class="wrap" id="main" style="height: 1200px;">
 			<div class="login">
 				<h2>Log-in</h2>
 				<div class="login_email">

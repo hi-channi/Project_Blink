@@ -42,6 +42,8 @@ public class LoginDao {
 		return name;
 	}
 	
+	
+	
 	//nickname에 맞는 pw인지를 확인
 	public boolean isLogin(String email,String pw)
 	{

@@ -96,7 +96,7 @@ img {
 </head>
 <body>
 <!-- 전체 영역 -->
-	<div id="main" style="height: 1200px;'">
+	<div id="main" style="height: 1200px;">
 <!-- 상단 구역 -->
 		<div class="head">
 			<br>
