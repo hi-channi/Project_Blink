@@ -72,7 +72,7 @@ multi = new MultipartRequest(request,realFolder,uploadSize,"utf-8",
 	qdao.insertQuestion(dto);
 	
 	//창닫기
- 	
+	
 	
 
 

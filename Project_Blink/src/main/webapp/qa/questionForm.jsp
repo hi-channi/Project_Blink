@@ -41,7 +41,8 @@ enctype="multipart/form-data">
 		
 		<tr>
 		<td colspan="2" align="center">
-		<button type="submit" class="btn btn-info btn-md">저장하기</button>
+		<button type="submit" class="btn btn-info btn-md"
+		>저장하기</button>
 		<button type="button" class="btn btn-info btn-md"
 		onclick='window.close()'>창 닫기</button>
 		</td>

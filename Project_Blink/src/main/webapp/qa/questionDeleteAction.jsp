@@ -14,7 +14,6 @@
 <%
 //num받아오기
 String qnum = request.getParameter("qnum");
-
 QuestionDao db = new QuestionDao();
 
 //삭제

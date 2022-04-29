@@ -22,7 +22,7 @@ $(function(){
 	//문의사항 입력 ...questionForm.jsp
 	$("#btnquestion").click(function(){
 		
-		window.open("questionForm.jsp","","width=550px,height=500px,left=500px,top=100px");
+		window.open("qa/questionForm.jsp","","width=550px,height=500px,left=500px,top=100px");
 	});
 	
 
