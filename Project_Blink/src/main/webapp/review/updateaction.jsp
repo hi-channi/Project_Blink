@@ -71,10 +71,10 @@ multi=new MultipartRequest(request,realFolder,uploadSize,"utf-8",
 	//update
 	dao.updateReview(dto); 
 	//이동
-	response.sendRedirect("../index.jsp?container=review/reviewlist.jsp?rnum="+rnum+"&currentPage="+currentPage);
-
-}catch(Exception e){
+	response.sendRedirect("../index.jsp?container=review/reviewlist.jsp");
 	
+}catch(Exception e){
+	System.out.println("업로드 오류: "+e.getMessage());
 }
 
 %>

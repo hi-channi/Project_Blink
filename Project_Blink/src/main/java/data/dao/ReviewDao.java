@@ -60,7 +60,6 @@ public class ReviewDao {
 				ReviewDto dto=new ReviewDto();
 				dto.setRnum(rs.getString("rnum"));
 				dto.setId(rs.getString("id"));
-				dto.setConnum(rs.getString("connum"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
 				dto.setImage(rs.getString("image"));
@@ -121,7 +120,6 @@ public class ReviewDao {
 			{
 				dto.setRnum(rs.getString("rnum"));
 				dto.setId(rs.getString("id"));
-				dto.setConnum(rs.getString("connum"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
 				dto.setImage(rs.getString("image"));
@@ -241,7 +239,6 @@ public class ReviewDao {
 				ReviewDto dto=new ReviewDto();
 				dto.setRnum(rs.getString("rnum"));
 				dto.setId(rs.getString("id"));
-				dto.setConnum(rs.getString("connum"));
 				dto.setSubject(rs.getString("subject"));
 				dto.setContent(rs.getString("content"));
 				dto.setImage(rs.getString("image"));

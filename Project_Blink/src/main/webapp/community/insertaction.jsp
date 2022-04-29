@@ -35,7 +35,7 @@ CommunityDao dao=new CommunityDao();
 dao.insertCommunity(dto);
 
 //목록
-response.sendRedirect("index.jsp?container=community/communitylist.jsp");
+response.sendRedirect("../index.jsp?container=community/communitylist.jsp");
 %>
 </body>
 </html>

@@ -50,7 +50,7 @@ multi=new MultipartRequest(request,realFolder,uploadSize,"utf-8",
 	ReviewDao dao=new ReviewDao();
 	MemberDao mdao=new MemberDao();
 		
-	String myid=mdao.getId(loginId);
+	String id=mdao.getId(loginId);
 	
 	dto.setSubject(subject);
 	dto.setContent(content);
@@ -58,20 +58,20 @@ multi=new MultipartRequest(request,realFolder,uploadSize,"utf-8",
 	dto.setImage(image);
 	System.out.println(image);
 	
-	dto.setId(myid);
+	dto.setId(id);
 	
 	
 	
 	
 	System.out.println(loginId);
-	System.out.println(myid);
-	dto.setId(myid);
+	System.out.println(id);
+	//dto.setId(id);
 	
 
 	dao.insertReview(dto);
 	
 	//목록으로 이동
-	response.sendRedirect("../index.jsp?container=review/reviewlist.sp");
+	response.sendRedirect("../index.jsp?container=review/reviewlist.jsp");
 	
 }catch(Exception e){
 	 System.out.println("업로드 오류: "+e.getMessage());

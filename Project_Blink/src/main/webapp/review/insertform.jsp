@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="main" style="height:1000px;">
-<form action="index.jsp?container=review/insertaction.jsp" method="post"
+<form action="review/insertaction.jsp" method="post"
 enctype="multipart/form-data">
    <table class="table table-bordered" style="width: 1000px; border-radius: 7px 10px 7px 20px; ">
       
