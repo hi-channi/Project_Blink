@@ -43,8 +43,7 @@ String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
 MemberDao dao = new MemberDao();
 String id = dao.getId(loginId);
 String nickname = dao.getNickname(id);
-
-
+String membertype = dao.getMembertype(id);
 
 
 //DB선언후 List를 가져옴
@@ -111,9 +110,13 @@ no=totalCount-(currentPage-1)*perPage;
 <br>
 <table class="table table-bordered table-hover" style="width:800px;">
 	<caption><b>게시판 목록 출력</b>
+	<%
+	if(loginOk!=null && membertype.equals("일반회원")){%>
 	<button type="button" class="btn btn-info btn-sm"
 	id="btnquestion"
 	style="margin-left: 600px;">질문하기</button>
+	<%} 
+	%>
 	</caption>
 	 <tr>
 		<th style="width:70px;">번호</th>

@@ -197,5 +197,35 @@ public class MemberDao {
 		
 		return nickname;
 	}
+	
+	public String getMembertype(String id)
+	{
+		String member_type = "";
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from member where id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				member_type = rs.getString("member_type");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return member_type;
+	}
 		
 }

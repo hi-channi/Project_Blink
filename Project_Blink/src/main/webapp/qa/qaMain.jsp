@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -64,6 +65,16 @@ $(function(){
 </head>
 <body>
 
+<% //로그인 상태 확인 및 처리됬는지 확인
+String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
+String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
+	
+MemberDao dao = new MemberDao();
+String id = dao.getId(loginId);
+String nickname = dao.getNickname(id);
+String membertype = dao.getMembertype(id);
+%>
+
 <div id="main" style="height: 100%; width:100%;" >
 
 <div class="accordion">
@@ -91,8 +102,12 @@ onclick="location.href='index.jsp?container=qa/questionList.jsp'">Q&A목록</but
 </tr>
 
 <tr>
+<%
+if(loginOk!=null && membertype.equals("일반회원")){%>
 <button type="button" class="btn btn-info btn-md"
 id="btnquestion">질문하기</button>
+<%} 
+%>
 </tr>
 
 

@@ -83,7 +83,7 @@ String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
 MemberDao mdao = new MemberDao();
 String id = mdao.getId(loginId);
 String nickname = mdao.getNickname(id);
-
+String membertype = mdao.getMembertype(id);
 %>
 <body>
 <table class="table table-condensed" style="width:650px;">
@@ -131,14 +131,22 @@ String nickname = mdao.getNickname(id);
 				 <input type="hidden" name="id" value="<%=id%>">		
 				  <table>
 				  	<tr>
+				  		<%
+					if(loginOk!=null && membertype.equals("기업회원")){%>
 				  	<td width="480px;">
 				  		<textarea width="470px;" height="70px;"
 				  		name="content" required="required" class="form-control">
-				  		</textarea>
+				  		</textarea>	
 				  	</td>
+				  	<%} 
+					%>
 				  	<td>
+				  	<%
+					if(loginOk!=null && membertype.equals("기업회원")){%>
 				  	<button type="submit" class="btn btn-info"
 				  	style="width:70px; height:70px;">등록</button>
+				  	<%} 
+					%>
 				  	</td>
 				  	</tr>
 				  </table>
@@ -170,12 +178,13 @@ String nickname = mdao.getNickname(id);
 						<b><%=nickname2 %></b> &nbsp;
 						<span style="font-size: 9pt; color: gray; margin-left: 20px;"><%=sdf.format(adto.getWrite_day()) %></span>
 						
-						<%
-						//댓글삭제는 로그인중이면서 로그인한 아이디와 같을 경우에만 삭제아이콘 보이게 코딩개별 #3 
-	                    %>
+						<% //댓글 지우기
+						if(loginOk!=null && adto.getId().equals(id))
+						{%>
 	                    <span class="adel glyphicon glyphicon-remove" anum="<%=adto.getAnum() %>"
 	                    style="cursor:pointer; margin-left:10px;"></span>
-	                    
+	                    <%} 
+	                    %>
 						<br>
 						<span style="font-size:10pt;"><%=adto.getContent().replace("\n", "<br>") %></span>
 						</td>
@@ -188,15 +197,30 @@ String nickname = mdao.getNickname(id);
 	     </td>
 	  </tr>
 </table>
-<div style="margin-left: 400px;">
-	<button type="button" class="btn btn-info" 	
-	id="btnquestion">질문하기</button>
-	<button type="button" class="btn btn-info" 
-	onclick="location.href='index.jsp?container=qa/questionList.jsp'">목록</button>
+<div style="margin-right: 100px;">
+	
+	<% 
+	if(loginOk!=null && dto.getId().equals(id))
+	{%>
 	<button type="button" class="btn btn-info" 
 	onclick="location.href='index.jsp?container=qa/questionUpdateForm.jsp?qnum=<%=qnum%>'">수정</button>
+	<%} 
+	%>
+	<% 
+	if(loginOk!=null && dto.getId().equals(id))
+	{%>
 	<button type="button" class="btn btn-info" 
 	onclick="location.href='index.jsp?container=qa/questionDeleteForm.jsp?qnum=<%=qnum%>'">삭제</button>
+	<%} 
+	%>
+	<%
+	if(loginOk!=null && membertype.equals("일반회원")){%>
+	<button type="button" class="btn btn-info" 	
+	id="btnquestion">질문하기</button>
+	<%} 
+	%>
+	<button type="button" class="btn btn-info" 
+	onclick="location.href='index.jsp?container=qa/questionList.jsp'">목록</button>
 </div>
 
 
