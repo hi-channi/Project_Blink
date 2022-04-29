@@ -37,7 +37,7 @@
 				class="form-control" required="required">
 				<option value="아이디어/기획" selected="selected">아이디어/기획</option>
 				<option value="환경/에너지" >환경/에너지</option>
-				<option value="연구/학술/논문">연구/학술/논문</option>
+				<option value="문학/예술/과학">문학/예술/과학</option>
 				</select>
 			</td>
 		</tr>

@@ -31,7 +31,7 @@ $(function(){
 			
 			type:"get",
 			dataType:"json",
-			url:"community/like_cnt.jsp",
+			url:"index.jsp?container=community/like_cnt.jsp",
 			data:{"bnum":bnum},
 			success:function(data){
 				//alert(data.chu);
@@ -58,7 +58,7 @@ $(function(){
 			
 			type:"get",
 			dataType:"html",
-			url:"community/commentdelete.jsp",
+			url:"index.jsp?container=community/commentdelete.jsp",
 			data:{"cnum":cnum},
 			success:function(){
 				
@@ -78,7 +78,7 @@ $(function(){
 			
 			type:"get",
 			dataType:"html",
-			url:"community/commentupdate.jsp",
+			url:"index.jsp?container=community/commentupdate.jsp",
 			data:{"cnum":cnum},
 			success:function(){
 				
@@ -182,7 +182,7 @@ MemberDao mdao=new MemberDao();
 	        <%
 	           if(loginOk!=null){%>
 	        	   <div class="commentform" >
-	        	     <form action="community/commentinsert.jsp?bnum=<%=dto.getBnum()%>&currentPage=<%=currentPage%>&id=<%=dto.getId()%>" method="post">
+	        	     <form action="index.jsp?container=community/commentinsert.jsp?bnum=<%=dto.getBnum()%>&currentPage=<%=currentPage%>&id=<%=dto.getId()%>" method="post">
 	        	     <!-- hidden -->
 	        	     <input type="hidden" name="bnum" value="<%=dto.getBnum()%>">
 	        	     <input type="hidden" name="id" value="<%=dto.getId()%>">

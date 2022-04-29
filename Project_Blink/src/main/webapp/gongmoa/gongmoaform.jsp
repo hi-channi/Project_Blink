@@ -539,7 +539,7 @@ Map<ContestDto,Integer> dDayMap=new HashMap<ContestDto,Integer>();
       String loginId=(String)session.getAttribute("loginId");
       String loginOk=(String)session.getAttribute("loginOk");
       MemberDao mdao=new MemberDao();
-      String myid=mdao.getId(loginOk);
+      String myid=mdao.getId(loginId);
       String myMember_type=mdao.getMembertype(myid);
       if(loginOk!=null && myMember_type.equals("기업회원")){%>
     	  
