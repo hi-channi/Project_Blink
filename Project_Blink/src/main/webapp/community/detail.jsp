@@ -103,11 +103,7 @@ String currentPage=request.getParameter("currentPage");
 String loginid=(String)session.getAttribute("loginId");
 String loginOk=(String)session.getAttribute("loginOk");
 
-
-
 CommunityDao dao=new CommunityDao();
-
-
 
 //조회수증가
 dao.updateReadCount(bnum);
@@ -120,10 +116,7 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 //데이터 가져오고 저장하기
 
 MemberDao mdao=new MemberDao();
-String myid=mdao.getId(loginid);
-System.out.println(loginid);
-System.out.println(myid);
-dto.setId(myid);
+
 
 %>
 <body>
@@ -158,14 +151,10 @@ dto.setId(myid);
     </tr>
 </table>
 
-<div style="margin-left: 660px;">
+<div style="margin-left: 600px;">
   <button type="button" class="btn btn-default"
   onclick="location.href='index.jsp?container=community/communitylist.jsp'">목록</button>
-   <%
-	      //로그인한 아이디와 글을쓴아이디가 같을때만 수정,삭제되게 한다
-	      if(loginOk!=null && dto.getId().equals(loginid)){%>
-	    	  
-  
+   
   
   <button type="button" class="btn btn-default"
   onclick="location.href='index.jsp?container=community/updateform.jsp?bnum=<%=bnum%>'">수정</button>
@@ -176,9 +165,9 @@ dto.setId(myid);
 	<span class="like_cnt"><%=dto.getLike_cnt() %></span>
 	<span class="glyphicon glyphicon-heart" style="color: red; font-size: 0px;"></span>
 	<br><br>
-		      <%}
+		   
 	      
-	      %>
+	      
 </div>
 
 <%
@@ -236,12 +225,11 @@ dto.setId(myid);
 	       		    	   String nickname=mdao.getNickname(cdto.getId());
 	       		    	  //System.out.println(nickname);
 	       		    	 
-	       		     
 	       		    	   %>
 	       		    	  <br>
 	       		    	  <b><%=nickname %></b></span>
 	       		    	  <%
-	       		    	  //글작성자와 댓글쓴 작성자가 같을경우
+	       		    	  
 	       		    	   if(dto.getId().equals(cdto.getId())){ %>
 	       		    		  
 	       		    		  <span style="color: gray;">(나)&nbsp;&nbsp;</span>
@@ -254,8 +242,19 @@ dto.setId(myid);
 	       		    	  <span style="font-size: 9pt; color: gray; margin-left: 20px;"><%=sdf.format(dto.getWrite_day()) %></span>
 	       		    	  
 	       		    	  <%
+	       			      //로그인한 상태의 아이디와 댓글을쓴아이디가 같을때만 삭제되게 한다
+	       			      //로그인을 한 상태여야하고->loginok, 그 로그인한 상태의 아이디(loginid-email이라 X) ,댓글쓴 작성자 아이디(cdto.getid)를 가져와야하낟.
+	       			      //loginok를 통해서 찾을 수 있는데, 로그인상태를 확인
+	       			      //로그인상태의 id와 댓글쓴아디 비교
+	       			      //로그인한 상태&인 사람의 id가 필요.
+	       			      //이제 어제로 돌아가보기
+	       			      //이메일에서 getId하면 아이디가 나온다.
+	       			      //getId에서 이메일을 넣으면
+	       			      //로그인한 사람의 아이디가 나온다.
 	       		    	   // 댓글삭제는 로그인중이면서 로그인한 아이디와 같을경우에만 삭제아이콘 보이게
-	       		    	  if(loginOk!=null && dto.getId().equals(cdto.getId()))%> 
+	       		    		 String loid=mdao.getId(loginid);
+	       			      
+	       		    	  if(loginOk!=null && cdto.getId().equals(loid))%> 
 	       		    		 <span class="cdel glyphicon glyphicon-remove" cnum="<%=cdto.getCnum()%>"
 	       		    		 style="cursor: pointer; margin-left: 10px;"></span> 
 	       		    		 

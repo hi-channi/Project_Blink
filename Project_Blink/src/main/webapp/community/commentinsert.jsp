@@ -18,7 +18,7 @@ CommentDto dto=new CommentDto();
 
 dto.setId(request.getParameter("id"));
 String id=request.getParameter("id");
-System.out.println("dd"+id);
+//System.out.println("dd"+id);
 dto.setBnum(request.getParameter("bnum"));
 String bnum=request.getParameter("bnum");
 dto.setContent(request.getParameter("content"));
