@@ -36,8 +36,8 @@ window.onresize = funLoad;
 <style type="text/css">
 html, body {
 	height: 100%;
-	background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
-	background-attachment: fixed;
+	background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%) !important;
+	background-attachment: fixed !important;
 	font-family: 'Noto Sans KR';
 }
 
@@ -60,7 +60,6 @@ div.container {
 	width: 1100px;
 	margin: 0 auto;
 	top: 3%;
-	padding-left: 50px;
 }
 
 div.footer {

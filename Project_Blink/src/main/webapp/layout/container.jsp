@@ -18,10 +18,11 @@ div {
 border: solid 0px gray;
 }
 
-#container {
+div.cont {
 	width: 1000px;
     position: absolute;
-    margin: 20px;
+    
+    padding: 30px;
 }
 
 div.head {
@@ -96,10 +97,9 @@ img {
 </head>
 <body>
 <!-- 전체 영역 -->
-	<div id="main" style="height: 1200px;'">
+	<div class="cont" id="main" style="height: 1200px;'">
 <!-- 상단 구역 -->
 		<div class="head">
-			<br>
 			<table style="width: 1000px; ">
 				<tr>
 					<td width="550" style="vertical-align:middle; ">
@@ -128,25 +128,25 @@ img {
 			공모아는 당신의 멋진 경험을 도와요
 		</div>
 		<div class="intro">
-			<div class="sq1">
+			<div class="sq1" onclick="location.href='index.jsp?container=gongmoa/gongmoaform.jsp'">
 				<img alt="" src="images/icon_preview.png" width="60"><br>
 				<span style="font-weight: bold; font-size: 1.5em">공모전 모아보기</span> <br>
 				<br> <span> 지금 진행되는<br> 모든 공모전을<br>모아볼 수 있어요
 				</span>
 			</div>
-			<div class="sq1">
+			<div class="sq1" onclick="location.href='index.jsp?container=qa/qaMain.jsp'">
 				<img alt="" src="images/icon_qna.png" width="60"><br>
 				<span style="font-weight: bold; font-size: 1.5em">Q&A</span> <br>
 				<br> <span> 공모전 담당자가 직접<br> 자세하게 답변해<br>알 수 있어요
 				</span>
 			</div>
-			<div class="sq1">
+			<div class="sq1" onclick="location.href='index.jsp?container=community/communitylist.jsp'">
 				<img alt="" src="images/icon_community.png" width="60"><br>
 				<span style="font-weight: bold; font-size: 1.5em">커뮤니티</span> <br>
 				<br> <span> 자유로운 정보 공유 및<br> 함께 공모전에 참여할<br>팀원을 구할 수 있어요
 				</span>
 			</div>
-			<div class="sq1" onclick="location.href='index.jsp?container=testhome.jsp'">
+			<div class="sq1" onclick="location.href='index.jsp?container=review/reviewlist.jsp'">
 				<img alt="" src="images/icon_review.png" width="60"><br>
 				<span style="font-weight: bold; font-size: 1.5em">우수후기</span> <br>
 				<br> <span> 지난 공모전에서 수상한<br> 후기를 통해<br>노하우를 얻을 수 있어요

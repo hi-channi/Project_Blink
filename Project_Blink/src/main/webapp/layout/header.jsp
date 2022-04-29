@@ -16,7 +16,7 @@ html {
 
 .logoimg {
 display: inline-block;
-	padding: 20px 0 20px 20px;
+	padding: 15px 0 0 30px;
 }
 
 nav {
@@ -90,7 +90,7 @@ a:
 <body>
 <!-- 로고 영역 -->
 <div class="logoimg">
-<img alt="" src="images/default-logo.png">
+<img alt="" src="images/title_logo.png" height="55" style="cursor: pointer;" onclick="location.href='index.jsp?container=layout/container.jsp'">
 </div>
 
 <!-- 메뉴 영역 -->
@@ -100,16 +100,16 @@ a:
       <a href="index.jsp?container=layout/container.jsp" class="main">Home</a>
     </li>
     <li>
-      <a href="#">공모전</a>
+      <a href="index.jsp?container=gongmoa/gongmoaform.jsp">공모전</a>
     </li>
     <li>
-      <a href="#">Q&A</a>
+      <a href="index.jsp?container=qa/qaMain.jsp">Q&A</a>
     </li>
     <li>
-      <a href="#">커뮤니티</a>
+      <a href="index.jsp?container=community/communitylist.jsp">커뮤니티</a>
     </li>
     <li>
-      <a href="#">공모전 후기</a>
+      <a href="index.jsp?container=review/reviewlist.jsp">공모전 후기</a>
     </li>
 	<%
 		// 로그인 상태: 마이페이지, 비로그인 상태: 회원가입
