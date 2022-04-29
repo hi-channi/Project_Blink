@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -84,8 +85,9 @@ a:
 </style>
 </head>
 <%
-	String loginOk=(String)session.getAttribute("loginOk");
-	String loginId=(String)session.getAttribute("loginId");
+	String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
+	String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
+
 %>
 <body>
 <!-- 로고 영역 -->

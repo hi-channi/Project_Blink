@@ -63,6 +63,9 @@ $(function(){
 
 </head>
 <body>
+
+<div id="main" style="height: 100%; width:100%;" >
+
 <div class="accordion">
 <input type="checkbox" id="answer1">
 <label for="answer1">강진님은 누구인가요?<em></em></label>
@@ -94,6 +97,7 @@ id="btnquestion">질문하기</button>
 
 
 
+</div>
 </div>
 </body>
 </html>

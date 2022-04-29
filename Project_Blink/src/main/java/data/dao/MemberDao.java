@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 
 import data.dto.MemberDto;
+import data.dto.QuestionDto;
 import mysql.db.DbConnect;
 
 public class MemberDao {
@@ -132,4 +135,67 @@ public class MemberDao {
 			return idx;
 		}	
 
+
+	//로그인에 해당하는 아이디 가져오기
+	public String getId(String email)
+	{
+		
+		String myid="";
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where email=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				myid=rs.getString("id");
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}				
+		return myid;
+	}
+	
+	
+	
+	public String getNickname(String id)
+	{
+		String nickname = "";
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from member where id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				nickname = rs.getString("nickname");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return nickname;
+	}
+		
 }

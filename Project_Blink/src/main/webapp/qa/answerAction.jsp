@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@page import="data.dao.AnswerDao"%>
 <%@page import="data.dto.AnswerDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,15 +15,28 @@
 <body>
 <%
 request.setCharacterEncoding("utf-8");
+
+String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
+String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
+
+//멤버dao가져오기
+MemberDao dao = new MemberDao();
+
+//로긴 아이디 값을 스트링 아이디로 변환? 가져오기?
+String id = dao.getId(loginId);
+
+
 AnswerDto dto =new AnswerDto();
+
+
 dto.setQnum(request.getParameter("qnum"));
-//현재 벨류가 눌이라 이거 하면 반환이 안됨dto.setId(request.getParameter("id"));
+dto.setId(id);
 dto.setContent(request.getParameter("content"));
 
 String qnum2 = request.getParameter("qnum");
 
-AnswerDao dao=new AnswerDao();
-dao.insertAnswer(dto);
+AnswerDao adao=new AnswerDao();
+adao.insertAnswer(dto);
 
 //보던페이지로 이동
 response.sendRedirect("../index.jsp?container=qa/questionContent.jsp?qnum="+qnum2);

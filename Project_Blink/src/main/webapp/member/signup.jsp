@@ -54,7 +54,7 @@ body {
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
-  top:40%;
+  top:25%;
   left:50%;
   transform: translate(-50%,-50%);
   border-radius: 15px;
@@ -185,7 +185,7 @@ body {
 </head>
 <body>
 
-<div class='container'>
+<div>
 <!-- <img src="../img/logo2.png" > -->
 </div>
 <!-- 입력 form -->

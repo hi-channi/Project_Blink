@@ -1,3 +1,5 @@
+<%@page import="data.dto.MemberDto"%>
+<%@page import="data.dao.MemberDao"%>
 <%@page import="java.awt.Window"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dto.QuestionDto"%>
@@ -29,9 +31,22 @@ $(function(){
 </script>
 </head>
 <body>
-<div id="main" style="height: 100%; width:100%;" >
+<div id="main" style="height: 100%;" >
+<div style="margin:0 auto;">
+
 
 <%
+//로그인 상태 확인 및 처리됬는지 확인
+String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
+String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
+	
+MemberDao dao = new MemberDao();
+String id = dao.getId(loginId);
+String nickname = dao.getNickname(id);
+
+
+
+
 //DB선언후 List를 가져옴
 QuestionDao db = new QuestionDao();
 //List<QuestionDto> list = db.getAllDatas();
@@ -76,12 +91,18 @@ start=(currentPage-1)*perPage;
 //각 페이지에서 필요한 게시글 가져오기
 List<QuestionDto> list=db.getList(start, perPage);
 
+
+
+
+
+
+
 //각 글앞에 붙일 시작번호 구하기
 //총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩감소
 no=totalCount-(currentPage-1)*perPage;
 %>
 
-<div class="container">
+<div>
 
 <div class="alert alert-info" style="width: 800px;">
 <b>총<%=totalCount %>개의 질문이 있습니다.</b>
@@ -113,25 +134,34 @@ no=totalCount-(currentPage-1)*perPage;
 		 <!-- 번호 -->
 		 <td align="center"><%=no-- %></td>
 		 
-		 <!-- 제목.. 내용보기로 연결 -->
+ 		 <!-- 제목.. 내용보기로 연결 -->
 		 <td>
 		 <a href="index.jsp?container=qa/questionContent.jsp?qnum=<%=dto.getQnum()%>"><%=dto.getSubject() %></a>
 		 </td>
+		 <% //닉네임 출력
+		 //String aname=dao.getNickname(id);
+		//작성자명 얻기
+		 String Id=dto.getId();
+		 //System.out.println(Id);                        
+		 String nickname2=dao.getNickname(dto.getId());
+		 //System.out.println(nickname);
+		 %>
 		 
+
+
 		 <!-- 작성자 -->
-		 <td align="center"><%=dto.getId() %></td>
+		 <td align="center"><%=nickname2 %></td>
 		 
 		 <!-- 작성일 -->
 		 <td><%=sdf.format(dto.getWrite_day()) %></td>
 		 </tr>
 	 <%}
 	 %>
-	  	 
 </table>
 </div>
 
 <!-- 페이징 처리 -->
-<div style="width: 1000px; text-align: center;">
+<div style="width: 800px; text-align: center;">
   <ul class="pagination">
   	
   	<%
@@ -167,6 +197,7 @@ no=totalCount-(currentPage-1)*perPage;
   	%>
   	
   </ul>
+  </div>
 </div>
 </div>
 

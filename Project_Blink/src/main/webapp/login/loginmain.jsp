@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%
-	String loginOk=(String)session.getAttribute("loginOk");
+	String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
 	
 	if(loginOk==null||loginOk.equals("")) {		// 로그아웃 상태
 	%>

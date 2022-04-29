@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@page import="data.dto.AnswerDto"%>
 <%@page import="java.util.List"%>
 <%@page import="data.dao.AnswerDao"%>
@@ -75,6 +76,14 @@ QuestionDto dto = dao.getData(qnum);
 
 //날짜 형식
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
+String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
+
+MemberDao mdao = new MemberDao();
+String id = mdao.getId(loginId);
+String nickname = mdao.getNickname(id);
+
 %>
 <body>
 <table class="table table-condensed" style="width:650px;">
@@ -119,8 +128,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				 <!-- hidden -->
 				 <input type="hidden" name="qnum" value="<%=dto.getQnum()%>">
 				 <%//현재로그인한 아이디 %>
-				 <%String id = (String)session.getAttribute("id");  %>
-  				 <input type="hidden" name="id" value="<%=id%>">		
+				 <input type="hidden" name="id" value="<%=id%>">		
 				  <table>
 				  	<tr>
 				  	<td width="480px;">
@@ -147,12 +155,19 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 						<span class="glyphicon glyphicon-user" style="font-size: 20pt;"></span>
 						</td>
 						<td>
-						<%
-						//작성자명 얻기(아이디 눌이므로 현재 비활성)
-						//String aname=mdao.getName(adto.getMyid());
-						%>
+					<% //닉네임 출력
+						 //String aname=dao.getNickname(id);
+						//작성자명 얻기
+						 String Id=adto.getId();
+						 //System.out.println(Id);                        
+						 String nickname2=mdao.getNickname(adto.getId());
+						 //System.out.println(nickname);
+						 %>
+
+
+
 						<br>
-						<%//비태그로 aname출력한곳 %> &nbsp;
+						<b><%=nickname2 %></b> &nbsp;
 						<span style="font-size: 9pt; color: gray; margin-left: 20px;"><%=sdf.format(adto.getWrite_day()) %></span>
 						
 						<%
@@ -174,7 +189,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	  </tr>
 </table>
 <div style="margin-left: 400px;">
-	<button type="button" class="btn btn-info" 
+	<button type="button" class="btn btn-info" 	
 	id="btnquestion">질문하기</button>
 	<button type="button" class="btn btn-info" 
 	onclick="location.href='index.jsp?container=qa/questionList.jsp'">목록</button>
