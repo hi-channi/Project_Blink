@@ -32,12 +32,18 @@ $(function(){
 			data:{"rnum":rnum},
 			success:function(data){
 				//alert(data.chu);
-				tag.next().text(data.like_cnt);
+				tag.next().text(data.like_cnt).animate({"font-size":"10px"},500,function(){
+					
+					//애니메이션이 끝난후 다시 글꼴 0px로 변경
+					$(this).css("font-size","0px");
+					
+				});
 				
 				tag.next().next().animate({"font-size":"10px"},500,function(){
 					
 					//애니메이션이 끝난후 다시 글꼴 0px로 변경
 					$(this).css("font-size","0px");
+					
 				});
 				
 			}
@@ -68,22 +74,18 @@ String myid=mdao.getId(loginid);
 dto.setId(myid);
 %>
 <body>
-<table class="table table-condensed" style="width: 650px;">
-	<caption><b>공모전 후기 내용보기</b></caption>
-		<tr>
-			<td style="width: 500px;">
-			<b><%=dto.getSubject() %></b>
-			</td>
+<div id="main" style="height: 100%;">
+<table class="table table-condensed" style="font-size: 18pt;">
+	<caption><b>공모전 후기<br><br></b></caption>
+		<tr style="font-size:10pt;">
 			<td>
-				<span style="color:gray; font-size: 9pt;">
-				<%=sdf.format(dto.getWrite_day()) %></span>
+			<b><%=dto.getSubject() %></b><br>
 			</td>
+			
 		</tr>
 		<tr>
-			<td colspan="2">
-			<b style="color:gray; font-size: 9pt;">조회 <%=dto.getRead_cnt() %></b>
-				<b style="color:gray; font-size: 9pt;">추천 <%=dto.getLike_cnt() %></b>
-				<span style="color:gray; font-size:9pt;">
+			<td>
+			<span style="color:gray; font-size:10pt;">작성자:
 				<%
 	       		    //작성자명 얻기
 	       		    String Id=dto.getId();
@@ -92,29 +94,42 @@ dto.setId(myid);
 	       		   //System.out.println(nickname);
 	       		    	 
 	       		     
-	       		    %><br>
+	       		    %>
 	       		   <b><%=nickname %></b>&nbsp;</span>
+	       		   
+	       	</td>
+	       
+	       	
+	       	<td>
+	       		  
+			<b style="color:gray; font-size: 9pt;">조회 <%=dto.getRead_cnt() %></b>
+				<b style="color:gray; font-size: 9pt;">추천 <%=dto.getLike_cnt() %></b>
+				&nbsp;&nbsp;
+				<span style="color:gray; font-size: 9pt;">
+				<%=sdf.format(dto.getWrite_day()) %></span>	 
+				</td>
 		</tr>
 		<tr>
 		<td colspan="2">
-				<span> <%=dto.getLink() %></span>
+		 	<button type="button" class="btn btn-info btn-md" 
+           onclick="window.open('<%=dto.getLink() %>')" target="_new">공모전 사이트 보러가기</button>
 		</td>
 		</tr>
 		<tr>
 		<td colspan="2">
+			
 				<br><br>
 				<!-- 이미지 클릭하면 새창에 원래 사이즈로 보기 -->
 				<img alt="" src="save/<%=dto.getImage()%>"
-				style="max-width: 200px;">
+				style="max-width: 400px; margin-left: auto; margin-right: auto; display: block;">
 				<br><br>
-				<%=dto.getContent().replace("\n","<br>") %>
-				<br><br>
-			</td>
+					<%=dto.getContent().replace("\n","<br>") %>
+			</td> 
 			
 		</tr>
 		</table>
 		
-		<div style="margin-left: 300px;">
+		<div style="margin-left: 660px;">
 			<button type="button" class="btn btn-default"
 			onclick="location.href='index.jsp?container=review/insertform.jsp'">글쓰기</button>
 			<button type="button" class="btn btn-default"
@@ -125,8 +140,9 @@ dto.setId(myid);
 			onclick="location.href='index.jsp?container=review/deleteaction.jsp?rnum=<%=rnum%>'">삭제</button>
 			<button type="button" class="btn btn-default likes"
 			 rnum="<%=dto.getRnum()%>">추천하기</button>
-			 <span class="like_cnt"><%=dto.getLike_cnt() %></span>
+			 <span class="like_cnt"></span>
 			 <span class="glyphicon glyphicon-heart" style="color: red; font-size: 0px;"></span>
+		</div>
 		</div>
 </body>
 </html>

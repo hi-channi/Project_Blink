@@ -22,6 +22,9 @@
 String rnum=request.getParameter("rnum");
 ReviewDao dao=new ReviewDao();
 ReviewDto dto=dao.getData(rnum);
+
+String image=dto.getImage();
+System.out.println(image);
 %>
 <title>Insert title here</title>
 </head>
@@ -42,7 +45,8 @@ enctype="multipart/form-data">
          <th style="width: 100px;" bgcolor="#ddd">포스터 업로드</th>
             <td>
                 <input type="file" name="image" style="width: 300px;" class="form-control" 
-                required="required" value="<%=dto.getImage()%>">
+                required="required" value="<%=dto.getImage() %>">
+                <img alt="" src="save/<%=dto.getImage() %>"width="60" border="1">
             </td>
       </tr>
       
@@ -50,15 +54,15 @@ enctype="multipart/form-data">
          <th style="width: 100px;" bgcolor="#ddd">사이트링크</th>
             <td>
                <input type="text" name="link" class="form-control"
-               placeholder="link" required="required" value="<%=dto.getLink()%>">
+               placeholder="link" required="required" value="<%=dto.getLink() %>">
             </td>
       </tr>
 
       
       <tr>
          <td colspan="2"> 
-            <textarea style="width: 500px; height: 200px;" value="<%=dto.getContent()%>"
-            class="form-control" name="content" required="required"></textarea>
+            <textarea style="width: 500px; height: 200px;"
+            class="form-control" name="content" required="required"> <%=dto.getContent() %></textarea>
          </td>
       </tr>
       

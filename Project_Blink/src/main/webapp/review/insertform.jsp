@@ -16,17 +16,19 @@
    left: 600px;
    top: 100px;
 }
+
 </style>
 
 <title>Insert title here</title>
 </head>
 <body>
+<div id="main" style="height:1000px;">
 <form action="index.jsp?container=review/insertaction.jsp" method="post"
 enctype="multipart/form-data">
-   <table class="table table-bordered" style="width: 500px;">
+   <table class="table table-bordered" style="width: 1000px; border-radius: 7px 10px 7px 20px; ">
       
       <tr>
-         <th style="width: 100px;" bgcolor="#ddd">공모전 이름</th>
+         <th style="width: 150px;" bgcolor="#ddd">공모전 이름</th>
             <td>
                <input type="text" name="subject" class="form-control"
                placeholder="subject" required="required">
@@ -34,15 +36,15 @@ enctype="multipart/form-data">
       </tr>
       
       <tr>
-         <th style="width: 100px;" bgcolor="#ddd">포스터 업로드</th>
+         <th style="width: 70px;" bgcolor="#ddd">포스터 업로드</th>
             <td>
-                <input type="file" name="image" style="width: 300px;" class="form-control" required="required">
+                <input type="file" name="image" style="width: 850px;" class="form-control" required="required">
               	
             </td>
       </tr>
       
       <tr>
-         <th style="width: 100px;" bgcolor="#ddd">사이트링크</th>
+         <th style="width: 150px;" bgcolor="#ddd">사이트링크</th>
             <td>
                <input type="text" name="link" class="form-control"
                placeholder="link" required="required">
@@ -52,7 +54,7 @@ enctype="multipart/form-data">
       
       <tr>
          <td colspan="2"> 
-            <textarea style="width: 500px; height: 200px;"
+            <textarea style="width: 1000px; height: 500px;"
             class="form-control" name="content" required="required"></textarea>
          </td>
       </tr>
@@ -66,7 +68,7 @@ enctype="multipart/form-data">
       </tr>
    </table>
 </form>
-
+</div>
 </body>
 </html>
 

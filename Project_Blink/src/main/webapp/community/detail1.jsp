@@ -101,7 +101,6 @@ String currentPage=request.getParameter("currentPage");
 
 //로그인한 아이디
 String loginid=(String)session.getAttribute("loginId");
-String loginOk=(String)session.getAttribute("loginOk");
 
 
 
@@ -127,11 +126,8 @@ dto.setId(myid);
 
 %>
 <body>
-
-
-<div id="main" style="height:1000px;">
-<table class="table table-condensed">
-  <caption style="font-size:25pt;"><b>커뮤니티</b></caption>
+<table class="table table-condensed" style="width: 1000px;">
+  <caption><b>내용보기</b></caption>
     <tr>
       <td style="width: 700px;">
          <b><%=dto.getSubject() %></b>
@@ -161,12 +157,6 @@ dto.setId(myid);
 <div style="margin-left: 660px;">
   <button type="button" class="btn btn-default"
   onclick="location.href='index.jsp?container=community/communitylist.jsp'">목록</button>
-   <%
-	      //로그인한 아이디와 글을쓴아이디가 같을때만 수정,삭제되게 한다
-	      if(loginOk!=null && dto.getId().equals(loginid)){%>
-	    	  
-  
-  
   <button type="button" class="btn btn-default"
   onclick="location.href='index.jsp?container=community/updateform.jsp?bnum=<%=bnum%>'">수정</button>
   <button type="button" class="btn btn-default"
@@ -175,10 +165,6 @@ dto.setId(myid);
 	 bnum="<%=dto.getBnum()%>">추천하기</button>
 	<span class="like_cnt"><%=dto.getLike_cnt() %></span>
 	<span class="glyphicon glyphicon-heart" style="color: red; font-size: 0px;"></span>
-	<br><br>
-		      <%}
-	      
-	      %>
 </div>
 
 <%
@@ -190,19 +176,16 @@ dto.setId(myid);
 
 	       <!-- 댓글들어갈곳 ..댓글입력폼,출력폼-->
 	       <div class="comment" >
-	        <%
-	           if(loginOk!=null){%>
 	        	   <div class="commentform" >
 	        	     <form action="community/commentinsert.jsp?bnum=<%=dto.getBnum()%>&currentPage=<%=currentPage%>&id=<%=dto.getId()%>" method="post">
 	        	     <!-- hidden -->
-	        	     <input type="hidden" name="bnum" value="<%=dto.getBnum()%>">
+	        	     <input type="hidden" name="cnum" value="<%=dto.getBnum()%>">
 	        	     <input type="hidden" name="id" value="<%=dto.getId()%>">
 	        	     <input type="hidden" name="currentPage" value="<%=currentPage%>">
 	        	       <table>
 	        	         <tr>
 	        	           <td width="480">
-	        	           
-	        	             <textarea style="width: 870px; height: 40px;"
+	        	             <textarea style="width: 470px; height: 40px;"
 	        	             name="content" required="required" class="form-control"></textarea>
 	        	           </td>
 	        	           <td>
@@ -213,8 +196,7 @@ dto.setId(myid);
 	        	       </table>
 	        	     </form>
 	        	   </div>
-	             <%}
-	           %>
+	           
 	          
 	       		<div class="commentlist" style="background-color: #eee;">
 	       		   <table style="width: 500px;">
@@ -226,56 +208,59 @@ dto.setId(myid);
 	       		     {%>
 	       		    	 <tr>
 	       		    	   <td width="60" align="left">
-	       		    	    <span class="glyphicon glyphicon-user" style="font-size: 20pt;">
+	       		    	    <span class="glyphicon glyphicon-user" style="font-size: 20pt;"></span>
 	       		    	   </td>
 	       		    	   <td>
 	       		    	   <%
 	       		    	     //작성자명 얻기
 	       		    	    String Id=cdto.getId();
-	       		    	  // System.out.println(Id);	       		    	 
+	       		    	   System.out.println(Id);	       		    	 
 	       		    	   String nickname=mdao.getNickname(cdto.getId());
-	       		    	  //System.out.println(nickname);
+	       		    	 System.out.println(nickname);
 	       		    	 
 	       		     
 	       		    	   %>
 	       		    	  <br>
-	       		    	  <b><%=nickname %></b></span>
+	       		    	  <b><%=nickname %></b>&nbsp;
 	       		    	  <%
 	       		    	  //글작성자와 댓글쓴 작성자가 같을경우
-	       		    	   if(dto.getId().equals(cdto.getId())){ %>
+	       		    	  /* if(dto.getId().equals(cdto.getId())){ */%>
 	       		    		  
-	       		    		  <span style="color: gray;">(나)&nbsp;&nbsp;</span>
-	       		    		  
+	       		    		  <span style="color: gray;">(작성자)</span>
 	       		    	 <% 
 	       		    	 
-	       		    	  }
+	       		    	  /*}*/
 	       		    	  %>
 	       		    	  <span style="font-size: 10pt;"><%=cdto.getContent().replace("\n", "<br>") %></span>
 	       		    	  <span style="font-size: 9pt; color: gray; margin-left: 20px;"><%=sdf.format(dto.getWrite_day()) %></span>
 	       		    	  
 	       		    	  <%
-	       		    	   // 댓글삭제는 로그인중이면서 로그인한 아이디와 같을경우에만 삭제아이콘 보이게
-	       		    	  if(loginOk!=null && dto.getId().equals(cdto.getId()))%> 
+	       		    	   /* 댓글삭제는 로그인중이면서 로그인한 아이디와 같을경우에만 삭제아이콘 보이게
+	       		    	  if(loginok!=null && adto.getMyid().equals(myid)){*/%> 
 	       		    		 <span class="cdel glyphicon glyphicon-remove" cnum="<%=cdto.getCnum()%>"
 	       		    		 style="cursor: pointer; margin-left: 10px;"></span> 
-	       		    		 
+	       		    		 <span class="cup glyphicon glyphicon-pencil" cnum="<%=cdto.getCnum()%>"
+	       		    		 style="cursor: pointer; margin-left: 10px;"></span> 
 	       					
 	       		    		 <%
-	       		   			 	  } 
+	       		   			 	  /* } */
+	       		    		 }
+	       		    		 
 	       		    		 %>
 
 	       		    	  <br>
 	       		    	   </td>
 	       		    	 </tr>
-	       		    	 
-	       		    	 
 	       		    	 <%}
+	       		    	 %>
+	       		    	 
+	       		    	 <%
 	       		    	 %>
 	       		    
 	       		   </table>
 	       		</div>
 </div>
 
-</div>
+
 </body>
 </html>

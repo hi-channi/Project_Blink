@@ -26,6 +26,7 @@ String root=request.getContextPath();
 	charset="utf-8"></script>	
 </head>
 <body>
+<div id="main" style="height:1000px;">
 <form action="community/updateaction.jsp" method="post">
 	<table class="table table-bordered" style="width: 800px;margin-left: 100px;">
 		<caption><h3>커뮤니티 게시판</h3></caption>
@@ -105,7 +106,7 @@ function pasteHTML(filepath){
 
 }
 </script>
-
+</div>
 </body>
 </html>
 

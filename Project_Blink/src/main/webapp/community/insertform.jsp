@@ -19,6 +19,7 @@
 	charset="utf-8"></script>	
 </head>
 <body>
+<div id="main" style="height:1000px;">
 <form action="index.jsp?container=community/insertaction.jsp" method="post" accept-charset="utf-8">
 	<table class="table table-bordered" style="width: 800px;margin-left: 100px;">
 		<caption><h3>커뮤니티 게시판</h3></caption>
@@ -98,7 +99,7 @@ function pasteHTML(filepath){
 
 }
 </script>
-
+</div>
 </body>
 </html>
 

@@ -15,11 +15,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
-span.day{
-	float: right;
-	font-size: 11pt;
-	color: gray;
-}
+	display: flex;
+	justify-content:center;
+	
+	
+	
+
 </style>
 
 </head>
@@ -34,7 +35,7 @@ int totalPage; //총 페이지수
 int startPage; //각 블럭의 시작페이지
 int endPage; //각 블럭의 끝페이지
 int start; //각 페이지의 시작 번호
-int perPage=5; //한페이지당 보여질 5개 게시글 갯수
+int perPage=15; //한페이지당 보여질 5개 게시글 갯수
 int perBlock=5; //12345다음 한블럭당 보여지는 페이지 갯수
 int currentPage; //현재페이지 
 
@@ -73,25 +74,27 @@ no=totalCount-(currentPage-1)*perPage;
 
 
 %>
-<div class="container">
-<div class="alert alert-info" style="width:800px;">
-<%-- <b>총<%=list.size() %>개의 글이 있습니다</b> --%>
+<div id="main" style="height: 1000px;">
+
+<div class="alert alert-info" style="weight: 700px;">
 <b>총<%=totalCount%>개의 공모전 후기들이 있습니다</b>
 </div>
 <br>
-<table class="table table-bordered" style="width: 800px;">
+<table style="width: 90%; margin:0 auto; font-size: 18px; " >
 	<caption><b>공모전 후기</b>
+	
 		<button type="button" class="btn btn-success btn-sm"
 		onclick="location.href='index.jsp?container=review/insertform.jsp'"
-		style="margin-left: 600px;">글쓰기</button>
+		style="margin-left: 900px; background:  #B4C3FF;" ><span class="glyphicon glyphicon-pencil">
+	</span>글쓰기</button>
 	</caption>
-		<tr style="background-color: skyblue;">
+		<tr style="background: skyblue;">
 			<th style="width: 70px;">번호</th>
-			<th style="width: 500px;">제목</th>
-			<th style="width: 200px;">작성자</th>
-			<th style="width: 120px;">작성일</th>
-			<th style="width: 70px;">조회</th>
-			<th style="width: 100px;">추천수</th>
+			<th style="width: 800px;">제목</th>
+			<th style="width: 150px;">작성자</th>
+			<th style="width: 150px;">작성일</th>
+			<th style="width: 100px;">조회</th>
+			<th style="width: 100px;" class="glyphicon glyphicon-thumbs-up"></th>
 		</tr>
 		<%
 		//출력할 날짜 형식

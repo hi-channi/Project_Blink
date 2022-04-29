@@ -17,11 +17,8 @@
 	display: flex;
 	justify-content:center;
 	
-	span.day{
-	float: right;
-	font-size: 11pt;
-	color: gray;
 }
+
 </style>
 
 </head>
@@ -37,7 +34,7 @@ int totalPage; //총 페이지수
 int startPage; //각블럭의 시작페이지
 int endPage; //각블럭의 끝페이지
 int start; //각페이지의 시작번호
-int perPage = 5; //한페이지에 보여질 글 갯수
+int perPage = 15; //한페이지에 보여질 글 갯수
 int perBlock = 5; //한블럭당 보여지는 페이지 개수
 int currentPage; //현재페이지
 
@@ -78,15 +75,19 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 %>
 <body>
 <!--게시판 출력  -->
-<div id="main" style="height: 1200px;">
-<button type="button" class="btn btn-success"
-style="margin-left: 720px; width: 100px; " 
-onclick="location.href='index.jsp?container=community/insertform.jsp'"><span class="glyphicon glyphicon-pencil"></span>글추가</button>
+<div id="main" style="height: 1000px;">
+<br><br>
 
-<table class="table table-bordered" style="width: 900px;">
-  <caption><b>팀원모집 커뮤니티</b></caption>
-  
-    <tr bgcolor="#ddd">
+<table style="width: 90%; margin:0 auto; font-size: 20px;" >
+  <caption><b>팀원모집 커뮤니티</b>
+  <br>
+  <button type="button" class="btn btn-success"
+style="margin-left: 900px; width: 100px; background: #B4C3FF;" 
+onclick="location.href='index.jsp?container=community/insertform.jsp'"><span class="glyphicon glyphicon-pencil">
+</span>글추가</button></style> 
+</caption>
+  <br>
+    <tr bgcolor="#skyblue;">
       <th width="70">번호</th>
       <th width="370">제목</th>
       <th width="100">작성자</th>
