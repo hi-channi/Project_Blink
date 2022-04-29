@@ -37,7 +37,7 @@ li {
 
 .login {
 	width: 30%;
-	height: 600px;
+	height: 700px;
 	background: white;
 	border-radius: 20px;
 	display: flex;
@@ -122,12 +122,13 @@ h2 {
 <%
 	String idSaveChk=(String)session.getAttribute("idSaveChk");		// 세션 값: 
 	String loginId=(String)session.getAttribute("loginId");		// 세션 아이디(이메일):
-	System.out.println(idSaveChk+loginId);
+	System.out.println((idSaveChk==null?"저장안함/":"저장/")+loginId);
 %>
 	<form action="loginproc.jsp" method="post">
 		<div class="wrap">
 			<div class="login">
-				<h2>Log-in</h2>
+				<img alt="" src="../images/title_logo2.png" height="50">
+				<h2>LOGIN</h2>
 				<div class="login_email">
 					<h4>email</h4>
 					<%	// 세션 반환값에 의해 이메일 입력 폼 value값 부여

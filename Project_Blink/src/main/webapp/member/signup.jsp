@@ -54,10 +54,10 @@ body {
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
-  top:40%;
+  top:25%;
   left:50%;
   transform: translate(-50%,-50%);
-  border-radius: 15px;
+  border: 3px solid transparent;
 }
 
 .joinForm h2 {
@@ -159,12 +159,12 @@ body {
   margin-bottom: 40px;
   width:80%;
   height:40px;
-  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec) !important;
   background-position: left;
   background-size: 200%;
   color:white;
   font-weight: bold;
-  border:none;
+  border:1px solid skyblue;
   cursor:pointer;
   transition: 0.4s;
   display:inline;
@@ -185,11 +185,11 @@ body {
 </head>
 <body>
 
-<div class='container'>
+<div>
 <!-- <img src="../img/logo2.png" > -->
 </div>
 <!-- 입력 form -->
-<div id="main" style="height: 1000px;'">
+<div id="main" style="height: 800px;">
 	<form action="member/memberInsert.jsp" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
 
 		<h2>회원가입</h2>
@@ -199,33 +199,33 @@ body {
 			<input type="radio" value="기업회원" name="Member_type">기업회원
 		</div>
 		<div class="textForm">
-			<input name="email" type="text" class="email" placeholder="이메일">
+			<input name="email" type="text" class="email" placeholder="이메일" required="required">
 		</div>
 		<div class="textForm">
-			<input name="pw" type="password" class="pw" placeholder="비밀번호">
+			<input name="pw" type="password" class="pw" placeholder="비밀번호" required="required">
 		</div>
 		<div class="textForm">
 			<input name="pwconfirm" type="password" class="pw"
-				placeholder="비밀번호 확인">
+				placeholder="비밀번호 확인" required="required">
 		</div>
 		<div class="textForm">
 			<input name="name" type="text" class="name" placeholder="이름">
 		</div>
 		<div class="textForm">
 			<input name="nickname" type="text" class="nickname"
-				placeholder="닉네임">
+				placeholder="닉네임" required="required">
 		</div>
 		<div class="textForm">
 			<input name="contact" type="number" class="contact"
-				placeholder="전화번호">
+				placeholder="전화번호" required="required">
 		</div>
 		<div class="textForm">
-			<input name="addr" type="text" class="addr" placeholder="주소">
+			<input name="addr" type="text" class="addr" placeholder="주소" required="required">
 		</div>
 		<div class="textForm">
-			<input name="company" type="text" class="company" placeholder="소속">
+			<input name="company" type="text" class="company" placeholder="소속" required="required">
 		</div>
-		<input type="submit" class="btn" value="J O I N" />
+		<input type="submit" class="btn" value="J O I N"/>
 	</form>
 </div>
 </body>

@@ -9,7 +9,7 @@
 	System.out.println("ID: "+email);
 	System.out.println("PW: "+pw);
 	
-	String idSaveChk=request.getParameter("save");
+	String idSaveChk=request.getParameter("idSaveChk");
 
 	// 이메일, 비밀번호 일치 여부 확인
 	LoginDao db=new LoginDao();
@@ -22,7 +22,7 @@
 		// 아이디,체크값 저장
 		session.setAttribute("loginId", email);
 		// 체크하면 on 체크안하면 null
-		session.setAttribute("save", idSaveChk);
+		session.setAttribute("idSaveChk", idSaveChk);
 		// 세션 유지시간
 		session.setMaxInactiveInterval(60*60*8); // 8시간 유지
 		// HOME 이동
