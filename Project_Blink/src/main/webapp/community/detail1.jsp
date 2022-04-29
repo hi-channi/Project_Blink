@@ -116,7 +116,10 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 //데이터 가져오고 저장하기
 
 MemberDao mdao=new MemberDao();
-
+String myid=mdao.getId(loginid);
+//System.out.println(loginid);
+//System.out.println(myid);
+dto.setId(myid);
 
 %>
 <body>
@@ -221,7 +224,7 @@ MemberDao mdao=new MemberDao();
 	       		    	   <%
 	       		    	     //작성자명 얻기
 	       		    	    String Id=cdto.getId();
-	       		    	  // System.out.println(Id);	       		    	 
+	       		    	  //System.out.println(Id);	       		    	 
 	       		    	   String nickname=mdao.getNickname(cdto.getId());
 	       		    	  //System.out.println(nickname);
 	       		    	 
@@ -252,9 +255,8 @@ MemberDao mdao=new MemberDao();
 	       			      //getId에서 이메일을 넣으면
 	       			      //로그인한 사람의 아이디가 나온다.
 	       		    	   // 댓글삭제는 로그인중이면서 로그인한 아이디와 같을경우에만 삭제아이콘 보이게
-	       		    		 String loid=mdao.getId(loginid);
-	       			      
-	       		    	  if(loginOk!=null && cdto.getId().equals(loid))%> 
+	       		    		
+	       		    	  if(loginOk!=null && nickname.equals("loginId"))%> 
 	       		    		 <span class="cdel glyphicon glyphicon-remove" cnum="<%=cdto.getCnum()%>"
 	       		    		 style="cursor: pointer; margin-left: 10px;"></span> 
 	       		    		 
