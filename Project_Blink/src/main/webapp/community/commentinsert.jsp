@@ -1,3 +1,5 @@
+<%@page import="data.dto.CommunityDto"%>
+<%@page import="data.dao.MemberDao"%>
 <%@page import="data.dao.CommentDao"%>
 <%@page import="data.dto.CommentDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,22 +16,28 @@
 <body>
 <%
 request.setCharacterEncoding("utf-8");
-CommentDto dto=new CommentDto();
-
-dto.setId(request.getParameter("id"));
-String id=request.getParameter("id");
-//System.out.println("dd"+id);
-dto.setBnum(request.getParameter("bnum"));
-String bnum=request.getParameter("bnum");
-dto.setContent(request.getParameter("content"));
-
-String currentPage=request.getParameter("currentPage");
-
-CommentDao dao=new CommentDao();
-dao.insertComment(dto);
-
-//목록 보던페이지로 이동
-response.sendRedirect("../index.jsp?container=commnunity/detail.jsp?bnum="+bnum+"&currentPage="+currentPage);
+//로그인 상태 가져오기
+String loginOk=(String)session.getAttribute("loginOk"); 
+//로그인한 아이디 가져오기
+String loginId=(String)session.getAttribute("loginId");
+//멤버 dao불러오기
+MemberDao dao = new MemberDao();
+//로그인 아이디(이메일)값을 아이디로 바꿔서 id라는 변수에 넣기
+String id = dao.getId(loginId);
+//dto에 저장
+CommentDto cdto =new CommentDto();
+//bnum,id,content 넣기
+cdto.setBnum(request.getParameter("bnum"));
+//bnum불러와서 변수선언
+String bnum2 = request.getParameter("bnum");
+cdto.setId(id);
+cdto.setContent(request.getParameter("content"));
+//comment dao불러오기
+CommentDao cdao=new CommentDao();
+//cdao의 insercomment메소드 호출
+cdao.insertComment(cdto);
+//디테일 페이지로 이동
+response.sendRedirect("../index.jsp?container=community/detail.jsp?bnum="+bnum2);
 %>
 </body>
 </html>

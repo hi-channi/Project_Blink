@@ -118,7 +118,7 @@ dto.setId(id);
     <tr>
       <td colspan="2">
         <span style="color: gray; font-size: 9pt;">
-        <%=dto.getBnum() %></span>
+       작성자: <%=dto.getBnum() %></span>
         <br><br>
         <%=dto.getContent().replace("\n", "<br>") %>
         <br><br>
@@ -127,8 +127,17 @@ dto.setId(id);
       </td>
     </tr>
 </table>
+<%
+             //각방명록에 달린 댓글 목록 가져오기
+           CommentDao cdao=new CommentDao();
+            List<CommentDto> clist=cdao.getAllComment(dto.getBnum());
 
+			System.out.println(id);
+          %>
+           <span class="answer" style="cursor: pointer;" bnum=<%=dto.getBnum() %>>답변 <%=clist.size() %></span>
+          
 <div style="margin-left: 660px;">
+
   <button type="button" class="btn btn-default"
   onclick="location.href='index.jsp?container=community/communitylist.jsp'">목록</button>
   <% 
@@ -158,40 +167,38 @@ dto.setId(id);
    %>
 </div>
 
-<%
-             //각방명록에 달린 댓글 목록 가져오기
-           CommentDao cdao=new CommentDao();
-            List<CommentDto> clist=cdao.getAllComment(dto.getBnum());
-          
-          %>
-            <%
-            //로그인 안했으면 댓글창 안열리게!
-              if(loginOk!=null){%>
+
+         			<!-- 댓글 -->
+           <div class="comment" >
+
           <!-- 댓글들어갈곳 ..댓글입력폼,출력폼-->
-          <div class="comment" >
+         
                  <div class="commentform" >
-                   <form action="community/commentinsert.jsp?bnum=<%=dto.getBnum()%>&currentPage=<%=currentPage%>&id=<%=dto.getId()%>" method="post">
+                   <form action="community/commentinsert.jsp" method="post">
                    <!-- hidden -->
-                   <input type="hidden" name="cnum" value="<%=dto.getBnum()%>">
+                   <input type="hidden" name="bnum" value="<%=dto.getBnum()%>">
                    <input type="hidden" name="id" value="<%=dto.getId()%>">
                    <input type="hidden" name="currentPage" value="<%=currentPage%>">
                      <table>
                        <tr>
+                        <% 
+   if(loginOk!=null)
+   {%>
                          <td width="480">
                            <textarea style="width: 470px; height: 40px;"
                            name="content" required="required" class="form-control"></textarea>
                          </td>
                          <td>
                            <button type="submit" class="btn btn-info" 
-                           style="width: 60px; height: 40px;"
-                           onclick="location.href='index.jsp?container=community/detail.jsp?bnum=<%=dto.getBnum()%>&currentPage=<%=currentPage%>'">등록</button>
+                           style="width: 60px; height: 40px;">등록</button>
                          </td>
+                         <%} 
+					%>
                        </tr>
                      </table>
                    </form>
                  </div>
-              <%}
-              %>
+
              
                 <div class="commentlist" style="background-color: #eee;">
                    <table style="width: 500px;">
@@ -210,10 +217,7 @@ dto.setId(id);
                             //작성자명 얻기   
                            String Id=cdto.getId();
                         String nickname2=mdao.getNickname(cdto.getId());
-                        System.out.println(nickname2);
-                        
-                     
-                          %>
+                         %>
                          <br>
                          <b><%=nickname2 %></b>&nbsp;
                          
@@ -222,14 +226,9 @@ dto.setId(id);
                          if(dto.getId().equals(cdto.getId())){ %>
 
                             <span style="color: gray;">(나)</span>
-                        <% 
-                        
-                         }
+                        <% }
                          %>
-                         
-                         
-                         <span style="font-size: 10pt;"><%=cdto.getContent().replace("\n", "<br>") %></span>
-                         <span style="font-size: 9pt; color: gray; margin-left: 20px;"><%=sdf.format(dto.getWrite_day()) %></span>
+                         <span style="font-size: 9pt; color: gray; margin-left: 20px;"><%=sdf.format(cdto.getWrite_day()) %></span>
                          
                          <%
                           //* 댓글삭제는 로그인중이면서 로그인한 아이디와 같을경우에만 삭제아이콘 보이게
@@ -237,13 +236,10 @@ dto.setId(id);
                          {%> 
                            <span class="cdel glyphicon glyphicon-remove" cnum="<%=cdto.getCnum()%>"
                            style="cursor: pointer; margin-left: 10px;"></span> 
-                           <span class="cup glyphicon glyphicon-pencil" cnum="<%=cdto.getCnum()%>"
-                           style="cursor: pointer; margin-left: 10px;"></span> 
-                         
                            <%}
                            %>
-
                          <br>
+                            <span style="font-size: 10pt;"><%=cdto.getContent().replace("\n", "<br>") %></span>
                           </td>
                         </tr>
                         <%}

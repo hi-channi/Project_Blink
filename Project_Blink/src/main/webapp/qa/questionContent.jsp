@@ -84,6 +84,7 @@ MemberDao mdao = new MemberDao();
 String id = mdao.getId(loginId);
 String nickname = mdao.getNickname(id);
 String membertype = mdao.getMembertype(id);
+
 %>
 <body>
 <table class="table table-condensed" style="width:650px;">
