@@ -1,6 +1,6 @@
 <%@page import="data.dto.MemberDto"%>
 <%@page import="data.dao.MemberDao"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,53 +14,55 @@
 </head>
 <body>
 <%//1. 한글설정 & 변수생성
-String id = (String) session.getAttribute("id");//object이기에 형변환필수
-//1-1.id값확인 -없으면 로그인페이지로 이동
-if(id == null){
-	response.sendRedirect("loginForm.jsp");
-}
+String email = (String) session.getAttribute("email");//object이기에 형변환필수
+//로그인이 되있으면
+String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
+String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
+
+
 //2. 멤버DAO객체 생성 -> 회원정보 가져오는 메서드생성
 MemberDao dao = new MemberDao();
 MemberDto dto = dao.getMember(email);
+
 
 //3. 데이터처리 : 테이블로 표현
 if(dto != null){
 %>
 <h2>마이페이지</h2>
-<table border="1">
+<table class="table table-condensed" style="width: 650px;">
 	<tr>
 		<td>이메일</td>
-		<td><%= %></td>
+		<td><%=dto.getEmail() %></td>
 	</tr>
 	<tr>
 		<td>비밀번호</td>
-		<td><%= %></td>
+		<td><%=dto.getPw() %></td>
 	</tr>
 	<tr>
 		<td>별명</td>
-		<td><%= %></td>
+		<td><%=dto.getNickname() %></td>
 	</tr>
 	<tr>
 		<td>이름</td>
-		<td><%= %></td>
+		<td><%=dto.getName() %></td>
 	</tr>
 	<tr>
 		<td>전화번호</td>
-		<td><%= %></td>
+		<td><%=dto.getContact() %></td>
 	</tr>
 	<tr>
 		<td>주소</td>
-		<td><%= %></td>
+		<td><%=dto.getAddr() %></td>
 	</tr>
 	<tr>
 		<td>소속</td>
-		<td><%= %></td>
+		<td><%=dto.getCompany() %></td>
 	</tr>
 </table>
 <% 
 } 
 %>
 <hr>
-<input type="button" value="뒤로가기" onclick="location.href='main.jsp'">
+<input type="button" value="뒤로가기" onclick="location.href='../index.jsp'">
 </body>
 </html>

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import data.dto.MemberDto;
 import mysql.db.DbConnect;
-
 public class MemberDao {
 	
 	DbConnect db = new DbConnect();
@@ -198,33 +197,35 @@ public class MemberDao {
 	
 	// 아이디가 일치하는 멤버의 정보를 얻어오는 메소드
 	public MemberDto getMember(String email){
-		
+		String sql = "select * from member where email=?";
 		MemberDto dto=null;
 		try {
-			String sql = "select * from member where email=?";
 			Connection conn = db.getConnection();
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
 			
-			ResultSet rs = ps.executeQuery();
+			pstmt.setString(1, email);
 			
 			if (rs.next()) {
 				dto = new MemberDto();
-				dto.setName(rs.getString("name"));
-				dto.setNickname(rs.getString("nickname"));
-				dto.setPw(rs.getString("pw"));
-				dto.setContact(rs.getString("contect"));
-				dto.setAddr(rs.getString("rs.getString"));
 				dto.setEmail(rs.getString("email"));
+				dto.setPw(rs.getString("pw"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setName(rs.getString("name"));
+				dto.setContact(rs.getString("contect"));
+				dto.setAddr(rs.getString("addr"));
 				dto.setCompany(rs.getString("company"));
-					
 			}
+			
 			conn.close();
-			ps.close();
+			pstmt.close();
 			rs.close();
+			rs=pstmt.executeQuery();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			return dto;
+		return dto;
 	}
 	
 	//전체데이터 테이블 리스트로 반환
