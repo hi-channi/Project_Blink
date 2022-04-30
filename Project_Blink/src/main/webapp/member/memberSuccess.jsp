@@ -12,24 +12,48 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
 
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
+
+}
+
+body {
+  background-image:#34495e;
+}
+
+.joinForm {
+  position:absolute;
+  width:400px;
+  height:400px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:25%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border: 3px solid transparent;
+}
+
 .btn {
 	border: solid 1px gray;
-  position:relative;
-  left:40%;
-  transform: translateX(-50%);
-  margin-bottom: 40px;
-  width:150px;
-  height:60px;
-  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
-  background-position: left;
-  background-size: 200%;
-  color:white;
-  font-weight: bold;
-
-  cursor:pointer;
-  transition: 0.4s;
-  display:inline;
-  align-items: center;
+  	position:relative;
+  	left:40%;
+  	transform: translateX(-50%);
+  	margin-bottom: 40px;
+ 	width:150px;
+  	height:60px;
+  	background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec) !important;
+  	background-position: left;
+  	background-size: 200%;
+  	color:white;
+  	font-weight: bold;
+  	cursor:pointer;
+  	transition: 0.4s;
+  	display:inline;
+  	align-items: center;
 }
 
 b{text-align: center;}

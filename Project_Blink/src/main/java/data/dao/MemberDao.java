@@ -13,6 +13,15 @@ public class MemberDao {
 	
 	DbConnect db = new DbConnect();
 	
+	public static MemberDao instance;
+	public MemberDao() {}
+	public static MemberDao getInstance() {
+		if (instance==null) {
+			instance=new MemberDao();
+		}
+		return instance;
+	}
+	
 	//아이디체크
 	public boolean isIdCheck(String id)
 	{
@@ -152,7 +161,7 @@ public class MemberDao {
 			
 			if(rs.next())
 			{
-				myid=rs.getString("id");
+				myid=rs.getString("email");
 			}
 		
 		} catch (SQLException e) {
@@ -196,6 +205,50 @@ public class MemberDao {
 		return nickname;
 	}
 	
+	public MemberDto getUserInfo(String email) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberDto member = null;
+
+		try {
+			
+			StringBuffer query = new StringBuffer();
+			query.append("SELECT * FROM member where email=?");
+
+			pstmt = conn.prepareStatement(query.toString());
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) 
+			{
+			
+				member = new MemberDto();
+				member.setEmail(rs.getString("email"));
+				member.setPw(rs.getString("pw"));
+				member.setName(rs.getString("name"));
+				member.setNickname(rs.getString("nickname"));
+				member.setContact(rs.getString("contect"));
+				member.setAddr(rs.getString("addr"));
+				member.setCompany(rs.getString("company"));
+				member.setRegistration_day(rs.getTimestamp("registration_day"));
+			}
+
+			return member;
+
+		} catch (Exception sqle) {
+			throw new RuntimeException(sqle.getMessage());
+		} finally {
+			try{
+				if ( pstmt != null ){ pstmt.close(); pstmt=null; }
+				if ( conn != null ){ conn.close(); conn=null;	}
+			}catch(Exception e){
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+	}	// end getUserInfo
+
+	
 	public String getMembertype(String id)
 	{
 		String member_type = "";
@@ -227,128 +280,126 @@ public class MemberDao {
 	}
 	
 	// 아이디가 일치하는 멤버의 정보를 얻어오는 메소드
-			public MemberDto getMember(String email) throws Exception {
-				String sql = "select * from member where email=?";
-				MemberDto member = null;
-				
-				try {
-					Connection conn = db.getConnection();
-					PreparedStatement ps = conn.prepareStatement(sql);
-					ResultSet rs = ps.executeQuery();
-					
-					if (rs.next()) {
-						member = new MemberDto();
-						member.setName(rs.getString("name"));
-						member.setNickname(rs.getString("nickname"));
-						member.setPw(rs.getString("pw"));
-						member.setContact(rs.getString("contect"));
-						member.setAddr(rs.getString("rs.getString"));
-						member.setEmail(rs.getString("email"));
-						member.setCompany(rs.getString("company"));
+	public MemberDto getMember(String email) throws Exception {
+		String sql = "select * from member where email=?";
+		MemberDto member = null;
+		
+		try {
+			Connection conn = db.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				member = new MemberDto();
+				member.setName(rs.getString("name"));
+				member.setNickname(rs.getString("nickname"));
+				member.setPw(rs.getString("pw"));
+				member.setContact(rs.getString("contect"));
+				member.setEmail(rs.getString("email"));
+				member.setCompany(rs.getString("company"));
 							
-					}
-					conn.close();
-					ps.close();
-					rs.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-				return member;
 			}
+			conn.close();
+			ps.close();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return member;
+	}
 			
-			//전체데이터 테이블 리스트로 반환
-			public ArrayList<MemberDto> getAllDatas() {
-				ArrayList<MemberDto> list=new ArrayList<MemberDto>();
-				
-				Connection conn=db.getConnection();
-				PreparedStatement pstmt=null;
-				ResultSet rs=null;
-				
-				String sql="select * from member order by email asc";
-				
-				try {
-					pstmt=conn.prepareStatement(sql);
-					rs=pstmt.executeQuery();
-					while(rs.next()) {
-						MemberDto dto=new MemberDto();
-						dto.setName(rs.getString("name"));
-						dto.setNickname(rs.getString("nickname"));
-						dto.setPw(rs.getString("pw"));
-						dto.setContact(rs.getString("contact"));
-						dto.setAddr(rs.getString("addr"));
-						dto.setEmail(rs.getString("email"));
-						dto.setCompany(rs.getString("company"));
-						
-						//list에 추가
-						list.add(dto);
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} finally {
-					db.dbClose(rs, pstmt, conn);
-				}
-					
-				return list;
-			}
-			
-			//수정하려는 하나의 데이터
-			public MemberDto getData(String email) {
+	//전체데이터 테이블 리스트로 반환
+	public ArrayList<MemberDto> getAllDatas() {
+		ArrayList<MemberDto> list=new ArrayList<MemberDto>();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member order by email asc";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
 				MemberDto dto=new MemberDto();
-				
-				Connection conn=db.getConnection();
-				PreparedStatement pstmt=null;
-				ResultSet rs=null;
-				
-				String sql="select * from member where email="+email;
-				
-				try {
-					pstmt=conn.prepareStatement(sql);
+				dto.setName(rs.getString("name"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setPw(rs.getString("pw"));
+				dto.setContact(rs.getString("contact"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setEmail(rs.getString("email"));
+				dto.setCompany(rs.getString("company"));
+						
+				//list에 추가
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
 					
-					rs=pstmt.executeQuery();
-						
-					if(rs.next()) {
-						dto.setName(rs.getString("name"));
-						dto.setNickname(rs.getString("nickname"));
-						dto.setPw(rs.getString("pw"));
-						dto.setContact(rs.getString("contact"));
-						dto.setAddr(rs.getString("addr"));
-						dto.setEmail(rs.getString("email"));
-						dto.setCompany(rs.getString("company"));
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				return dto;
-			}
+		return list;
+	}
 			
-			//수정
-			public void memberUpdate(MemberDto dto) {
-				Connection conn=db.getConnection();
-				PreparedStatement pstmt=null;
+	//수정하려는 하나의 데이터
+	public MemberDto getData(String email) {
+		MemberDto dto=new MemberDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where email="+email;
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
 				
-				String sql="update member set name=?, nickname=?, pw=?, contact=?,"
-						+ "company=? where email=?";
-				
-				try {
-					pstmt=conn.prepareStatement(sql);
-					pstmt.setString(1, dto.getName());
-					pstmt.setString(2, dto.getNickname());
-					pstmt.setString(3, dto.getPw());
-					pstmt.setString(4, dto.getContact());
-					pstmt.setString(5, dto.getCompany());
-					pstmt.setString(6, dto.getEmail());
-						
-					pstmt.execute();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} finally {
-					db.dbClose(pstmt, conn);
-				}
-				
+			if(rs.next()) {
+				dto.setName(rs.getString("name"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setPw(rs.getString("pw"));
+				dto.setContact(rs.getString("contact"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setEmail(rs.getString("email"));
+				dto.setCompany(rs.getString("company"));
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+		
+	//수정
+	public void memberUpdate(MemberDto dto) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update member set name=?, nickname=?, pw=?, contact=?,"
+				+ "company=? where email=?";
+			
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getNickname());
+			pstmt.setString(3, dto.getPw());
+			pstmt.setString(4, dto.getContact());
+			pstmt.setString(5, dto.getCompany());
+			pstmt.setString(6, dto.getEmail());
+				
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
 }
