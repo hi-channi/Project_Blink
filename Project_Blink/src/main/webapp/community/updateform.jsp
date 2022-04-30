@@ -11,10 +11,12 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <%
 String bnum=request.getParameter("bnum");
+//System.out.println(bnum);
+String currentPage=request.getParameter("currentPage");
 CommunityDao dao=new CommunityDao();
 CommunityDto dto=dao.getData(bnum);
 String content=dto.getContent();
-System.out.println(content);
+//System.out.println(content);
 //프로젝트의 경로
 String root=request.getContextPath();
 %>
@@ -28,6 +30,10 @@ String root=request.getContextPath();
 <body>
 <div id="main" style="height:1000px;">
 <form action="community/updateaction.jsp" method="post">
+
+<input type="hidden" name="bnum" value="<%=bnum%>">
+<input type="hidden" name="currentPage" value="<%=currentPage%>">
+
 	<table class="table table-bordered" style="width: 800px;margin-left: 100px;">
 		<caption><h3>커뮤니티 게시판</h3></caption>
 		

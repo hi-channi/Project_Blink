@@ -16,7 +16,7 @@
 <body>
 <% 
 String currentPage=request.getParameter("currentPage");
-/* System.out.println(currentPage); */
+//System.out.println(currentPage);
 CommunityDao dao=new CommunityDao();
 
 
@@ -24,7 +24,7 @@ String bnum=request.getParameter("bnum");
 
 dao.deleteCommunity(bnum);
 
-response.sendRedirect("../index.jsp?container=community/communitylist.jsp?currentPage"+currentPage);
+response.sendRedirect("../index.jsp?container=community/communitylist.jsp");
 
 %>
 </body>
