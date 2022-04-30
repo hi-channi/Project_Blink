@@ -27,7 +27,10 @@
 <body>
 <%
 ReviewDao dao=new ReviewDao();
-
+//로그인한 상태
+String loginOk=(String)session.getAttribute("loginOk");
+//로그인한 아이디
+String loginId=(String)session.getAttribute("loginId");
 
 // 페이징처리에 필요한 변수
 int totalCount; //총 글수
@@ -82,11 +85,15 @@ no=totalCount-(currentPage-1)*perPage;
 <br>
 <table style="width: 90%; margin:0 auto; font-size: 18px; " >
 	<caption><b>공모전 후기</b>
-	
+	<% 
+   if(loginOk!=null)
+   {%>
 		<button type="button" class="btn btn-success btn-sm"
 		onclick="location.href='index.jsp?container=review/insertform.jsp'"
 		style="margin-left: 900px; background:  #B4C3FF;" ><span class="glyphicon glyphicon-pencil">
 	</span>글쓰기</button>
+	 <%} 
+   %>
 	</caption>
 		<tr style="background: skyblue;">
 			<th style="width: 70px;">번호</th>

@@ -95,11 +95,14 @@ MemberDao mdao=new MemberDao();
 String id=mdao.getId(loginId);
 //id를 mdao의 닉네임으로 변환해주고 nickname에 저장
 String nickname = mdao.getNickname(id);
+System.out.println(nickname);        
 dto.setId(id);
+
 
 
 %>
 <body>
+<div id="main" style="height: 100%;">
 <table class="table table-condensed" style="width: 1000px;">
   <caption><b>내용보기</b></caption>
     <tr>
@@ -118,7 +121,7 @@ dto.setId(id);
     <tr>
       <td colspan="2">
         <span style="color: gray; font-size: 9pt;">
-       작성자: <%=dto.getBnum() %></span>
+       작성자: <%=nickname%></span>
         <br><br>
         <%=dto.getContent().replace("\n", "<br>") %>
         <br><br>
@@ -132,7 +135,11 @@ dto.setId(id);
            CommentDao cdao=new CommentDao();
             List<CommentDto> clist=cdao.getAllComment(dto.getBnum());
 
-			System.out.println(id);
+			
+             //작성자명
+              String nickname1=mdao.getNickname(dto.getId());
+              System.out.println(nickname1);         
+			
           %>
            <span class="answer" style="cursor: pointer;" bnum=<%=dto.getBnum() %>>답변 <%=clist.size() %></span>
           
@@ -215,7 +222,7 @@ dto.setId(id);
                           <td>
                           <%
                             //작성자명 얻기   
-                           String Id=cdto.getId();
+                          
                         String nickname2=mdao.getNickname(cdto.getId());
                          %>
                          <br>
@@ -251,7 +258,7 @@ dto.setId(id);
                    </table>
                 </div>
 </div>
-
+</div>
 
 </body>
 </html>

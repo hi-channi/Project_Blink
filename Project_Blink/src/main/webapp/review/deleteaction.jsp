@@ -18,7 +18,7 @@
 <%
 //num,pass
 String rnum=request.getParameter("rnum");
-
+String currentPage=request.getParameter("currentPage");
 ReviewDao dao=new ReviewDao();
 
 //게시글 지우기 전에 업로드 이미지 지우기
@@ -43,7 +43,7 @@ ReviewDao dao=new ReviewDao();
 		
 			
 	//리스트로 이동
-	response.sendRedirect("../index.jsp?container=review/reviewlist.jsp");
+	response.sendRedirect("../index.jsp?container=review/reviewlist.jsp?currentPage="+currentPage);
 	
 
 

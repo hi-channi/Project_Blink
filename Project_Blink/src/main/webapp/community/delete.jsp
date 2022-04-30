@@ -15,16 +15,15 @@
 </head>
 <body>
 <% 
+String bnum=request.getParameter("bnum");
 String currentPage=request.getParameter("currentPage");
 //System.out.println(currentPage);
 CommunityDao dao=new CommunityDao();
 
 
-String bnum=request.getParameter("bnum");
-
 dao.deleteCommunity(bnum);
 
-response.sendRedirect("../index.jsp?container=community/communitylist.jsp");
+response.sendRedirect("../index.jsp?container=community/communitylist.jsp?currentPage="+currentPage);
 
 %>
 </body>
