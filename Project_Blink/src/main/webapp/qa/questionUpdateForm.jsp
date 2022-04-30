@@ -18,7 +18,7 @@
 String qnum=request.getParameter("qnum");
 //디비 선언
 QuestionDao dao = new QuestionDao();
-//넘에 해당하는 디티오 가져오기
+//넘에 해당하는 디티오 db서 가져오기
 QuestionDto dto = dao.getData(qnum);
 
 %>
