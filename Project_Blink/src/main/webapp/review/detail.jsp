@@ -77,10 +77,10 @@ dto.setId(myid);
 
 //작성자명
 String nickname1=mdao.getNickname(dto.getId());
-System.out.println(dto.getId());//로그인한 id
-System.out.println(myid);//로그인한 id
-System.out.println(nickname); //글작성자nickname
-System.out.println(nickname1); //로그인한 작성자nickname
+//System.out.println(dto.getId());//로그인한 id
+//System.out.println(myid);//로그인한 id
+//System.out.println(nickname); //글작성자nickname
+//System.out.println(nickname1); //로그인한 작성자nickname
 %>
 <body>
 <div id="main" style="height: 100%;">
@@ -151,7 +151,7 @@ System.out.println(nickname1); //로그인한 작성자nickname
    if(loginOk!=null && nickname.equals(nickname1))
    {%>
 			<button type="button" class="btn btn-default"
-			onclick="location.href='index.jsp?container=review/deleteaction.jsp?rnum=<%=rnum%>&currentPage=<%=currentPage%>'">삭제</button>
+			onclick="location.href='index.jsp?container=review/reviewDeleteForm.jsp?rnum=<%=rnum%>'">삭제</button>
 				<%} 
    %>
       <% 

@@ -100,6 +100,8 @@ dto.setId(myid);
 <body>
 <div id="main" style="height: 100%;">
 <table class="table table-condensed" style="width: 1000px;">
+<input type="hidden" name="bnum" value="<%=bnum%>">
+<input type="hidden" name="currentPage" value="<%=currentPage%>">
   <caption><b>내용보기</b></caption>
     <tr>
       <td style="width: 700px;">
@@ -160,7 +162,7 @@ dto.setId(myid);
    if(loginOk!=null && nickname.equals(nickname1))
    {%>
   <button type="button" class="btn btn-default"
-  onclick="location.href='index.jsp?container=community/delete.jsp?bnum=<%=bnum%>&currentPage=<%=currentPage%>'">삭제</button>
+  onclick="location.href='index.jsp?container=community/communityDeleteForm.jsp?bnum=<%=bnum%>'">삭제</button>
     <%} 
    %>
       <% 

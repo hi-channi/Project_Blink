@@ -1,5 +1,3 @@
-<%@page import="java.io.File"%>
-<%@page import="data.dao.CommunityDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,17 +12,22 @@
 
 </head>
 <body>
-<% 
-String bnum=request.getParameter("bnum");
-String currentPage=request.getParameter("currentPage");
-//System.out.println(currentPage);
-CommunityDao dao=new CommunityDao();
-
-
-dao.deleteCommunity(bnum);
-
-response.sendRedirect("../index.jsp?container=community/communitylist.jsp?currentPage="+currentPage);
-
+<%
+String rnum = request.getParameter("rnum");
 %>
+<form action="review/reviewDeleteAction.jsp" method="post">
+	<table class="table table-bordered" style="width:200px;">
+	<caption><b>정말로 삭제하시겠습니까?</b></caption>
+	<tr>
+	<th>
+	<!-- hidden으로 qnum넘기는건 기본이라고 생각 -->
+	<input type="hidden" name="rnum" value="<%=rnum %>">
+	<br><br>
+	<button type="submit" class="btn btn-danger">예</button>
+	<button type="button" onclick="history.back()"
+	class="btn btn-success">아니요</button>	
+	</th>
+	</tr>
+	</table>
 </body>
 </html>
