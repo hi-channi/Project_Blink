@@ -70,7 +70,7 @@ $(function(){
 <% //로그인 상태 확인 및 처리됬는지 확인
 String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
 String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
-	
+	//asdasd
 MemberDao dao = new MemberDao();
 String id = dao.getId(loginId);
 String nickname = dao.getNickname(id);
