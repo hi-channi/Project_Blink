@@ -14,6 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Gamja+Flower&family=Hi+Melody&family=Titillium+Web:wght@200&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
@@ -62,6 +64,43 @@ $(function(){
 	});	
 });
 </script>
+<style type="text/css">
+.btn {
+  position:relative;
+  left:40%;
+  margin-left: -180px;
+  margin-bottom: 40px;
+  width:10%;
+  height:40px;
+  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec) !important;
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:1px solid skyblue;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+table {
+	font-size: 12pt;
+	width: 100%;
+	text-align: left;
+	border-spacing: 30px;
+}
+
+.content {
+	font-size: 20pt;
+	text-align: left;
+	background-color:#F2F2F2;
+	text-align: left;
+	width:650px;
+	height: 200px;
+
+}
+
+</style>
 
 </head>
 <%
@@ -86,25 +125,15 @@ String nickname = mdao.getNickname(id);
 String membertype = mdao.getMembertype(id);
 %>
 <body>
-<table class="table table-condensed" style="width:650px;">
-	<caption><b>내용보기</b></caption>
-		<tr>
-			<td style="width:500px;">
-				<b><%=dto.getSubject() %></b>
-			</td>
-			
-			<td>
-				<span style="color: gray; font-size: 9pt;">
-				<%=sdf.format(dto.getWrite_day()) %></span>
-			</td>
-		</tr>
-		
+<div id="main" style="height: 1000px;">
+<h3><%=dto.getSubject() %></h3>
+<h5 cla>작성자 : <%=dto.getId() %> 작성일 : <%=sdf.format(dto.getWrite_day()) %></h5>
+<table class="table table-condensed" style="width:650px; height: 300px; margin-right: auto; margin-left: auto;">
+
 		<tr>
 			<td colspan="2">
-				<span style="color: gray; font-size: 9pz;">
-				작성자 : <%=dto.getId() %></span>
-				<br></br>
-				<pre><%=dto.getContent() %></pre>
+				<pre class="content"><%=dto.getContent() %></pre>
+				<h4></h4>
 			</td>
 		</tr>
 
@@ -122,8 +151,8 @@ String membertype = mdao.getMembertype(id);
 			
 			<!-- 답글들어갈곳 입력폼 출력폼 -->
 			
-			<div class="answer">
-				<div class="answerform">
+			<div>
+				<div>
 				 <form action="qa/answerAction.jsp" method="post">
 				 <!-- hidden -->
 				 <input type="hidden" name="qnum" value="<%=dto.getQnum()%>">
@@ -153,7 +182,7 @@ String membertype = mdao.getMembertype(id);
 				  </form>
 				</div>
 			
-				<div class="answerlist" style="background-color: #eee;">
+				<div style="background-color: #eee;">
 					<table style="width:500px;">
 					<%
 					for(AnswerDto adto:alist)
@@ -219,9 +248,11 @@ String membertype = mdao.getMembertype(id);
 	id="btnquestion">질문하기</button>
 	<%} 
 	%>
-	<button type="button" class="btn btn-info" 
+	<button type="button" class="btn" 
 	onclick="location.href='index.jsp?container=qa/questionList.jsp'">목록</button>
 </div>
+</div>
+
 
 
 

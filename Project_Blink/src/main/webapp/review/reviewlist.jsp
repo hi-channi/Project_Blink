@@ -15,19 +15,100 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
-	display: flex;
-	justify-content:center;
+display: flex;
+justify-content:center;
 	
-	
-	
+}
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR';
 
+}
+
+table {
+  border-radius: 0.25em;
+  border-collapse: collapse;
+  margin: 1em;
+  width: 90%;
+  margin: auto;
+  font-size: 20px;
+  font-family: 'Noto Sans KR';
+}
+th {
+  border-bottom: 1px solid #364043;
+  color: #3498db;
+  letter-spacing:7px;
+  text-indent:7px;
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  text-align: center !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+td {
+  color: black;
+  font-weight: 400;
+  font-size: 0.8em;
+  padding: 0.65em 1em;
+  text-align: center;
+  border-bottom: 1px solid #E6E6E6;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+tbody tr {
+  transition: background 0.25s ease;
+}
+tbody tr:hover {
+  background: #DEBDFA;
+  color: white;
+}
+
+button {
+	width: 100px;
+	background: #B4C3FF;
+	float: right;
+}
+
+.comulist {
+   width: 100%;
+   text-align : center;
+   border: 0;   
+   outline: none;
+   background-position: center;
+   background-size: 200%;
+   color: #3498db;
+   letter-spacing:7px;
+   text-indent:7px;
+   font-size:40px;
+}
+
+a{
+	text-decoration-line: none !important;
+}
+
+.my.pagination > .active > a,
+.my.pagination > .active > span, 
+.my.pagination > .active > a:hover, 
+.my.pagination > .active > span:hover, 
+.my.pagination > .active > a:focus, 
+.my.pagination > .active > span:focus {
+  background: #8e44ad;
+  border-color: #8e44ad;
+  color: white !important;
+}
 </style>
 
 </head>
 <body>
 <%
 ReviewDao dao=new ReviewDao();
-
+//로그인한 상태
+String loginOk=(String)session.getAttribute("loginOk");
+//로그인한 아이디
+String loginId=(String)session.getAttribute("loginId");
 
 // 페이징처리에 필요한 변수
 int totalCount; //총 글수
@@ -80,23 +161,30 @@ no=totalCount-(currentPage-1)*perPage;
 <b>총<%=totalCount%>개의 공모전 후기들이 있습니다</b>
 </div>
 <br>
-<table style="width: 90%; margin:0 auto; font-size: 18px; " >
-	<caption><b>공모전 후기</b>
-	
+<table style="width: 90%; margin:0 auto; font-size: 18px; ">
+<caption><b class="comulist">공모전 후기</b>
+	<% 
+   if(loginOk!=null)
+   {%>
 		<button type="button" class="btn btn-success btn-sm"
 		onclick="location.href='index.jsp?container=review/insertform.jsp'"
 		style="margin-left: 900px; background:  #B4C3FF;" ><span class="glyphicon glyphicon-pencil">
 	</span>글쓰기</button>
+	 <%} 
+   %>
 	</caption>
-		<tr style="background: skyblue;">
-			<th style="width: 70px;">번호</th>
-			<th style="width: 800px;">제목</th>
-			<th style="width: 150px;">작성자</th>
-			<th style="width: 150px;">작성일</th>
-			<th style="width: 100px;">조회</th>
-			<th style="width: 100px;" class="glyphicon glyphicon-thumbs-up"></th>
-		</tr>
-		<%
+  <thead>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>작성일</th>
+      <th>조회</th>
+      <th class="glyphicon glyphicon-thumbs-up"></th> <!-- 글리파이콘때문에 깨짐 -->
+     </tr> 
+  </thead>
+  <tbody>
+    <%
 		//출력할 날짜 형식
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String loginid=(String)session.getAttribute("loginId");
@@ -139,6 +227,7 @@ no=totalCount-(currentPage-1)*perPage;
 			</tr>
 		<%}
 		%>
+  </tbody>
 </table>
 </div>
 
@@ -148,7 +237,7 @@ no=totalCount-(currentPage-1)*perPage;
 
 <!-- 페이징처리 -->
 <div style="width: 500px; text-align: center;" class="container">
-	<ul class="pagination">
+	<ul class="pagination my">
 		<%
 		//이전
 		if(startPage>1)

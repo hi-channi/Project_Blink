@@ -9,16 +9,95 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Gamja+Flower&family=Hi+Melody&family=Titillium+Web:wght@200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Yeon+Sung&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-	display: flex;
-	justify-content:center;
+display: flex;
+justify-content:center;
 	
 }
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR';
 
+}
+
+table {
+  border-radius: 0.25em;
+  border-collapse: collapse;
+  margin: 1em;
+  width: 90%;
+  margin: auto;
+  font-size: 20px;
+  font-family: 'Noto Sans KR';
+}
+th {
+  border-bottom: 1px solid #364043;
+  color: #3498db;
+  letter-spacing:7px;
+  text-indent:7px;
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  text-align: center !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+td {
+  color: black;
+  font-weight: 400;
+  font-size: 0.8em;
+  padding: 0.65em 1em;
+  text-align: center;
+  border-bottom: 1px solid #E6E6E6;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+tbody tr {
+  transition: background 0.25s ease;
+}
+tbody tr:hover {
+  background: #DEBDFA;
+  color: white;
+}
+
+button {
+	width: 100px;
+	background: #B4C3FF;
+	float: right;
+}
+
+.comulist {
+   width: 100%;
+   text-align : center;
+   border: 0;   
+   outline: none;
+   background-position: center;
+   background-size: 200%;
+   color: #3498db;
+   letter-spacing:7px;
+   text-indent:7px;
+   font-size:40px;
+}
+
+a{
+	text-decoration-line: none !important;
+}
+
+.my.pagination > .active > a,
+.my.pagination > .active > span, 
+.my.pagination > .active > a:hover, 
+.my.pagination > .active > span:hover, 
+.my.pagination > .active > a:focus, 
+.my.pagination > .active > span:focus {
+  background: #8e44ad;
+  border-color: #8e44ad;
+  color: white !important;
+}
 </style>
 
 </head>
@@ -71,31 +150,32 @@ List<CommunityDto> list = dao.getList(start, perPage);
 //각 글앞에 붙일 시작번호 구하기
 //총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
 no = totalCount - (currentPage - 1) * perPage;
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd");
 %>
 <body>
 <!--게시판 출력  -->
-<div id="main" style="height: 1000px;">
-<br><br>
+<div id="main" style="min-height: 1000px; max-height:100%; width:100%;" >
+<table style="width: 90%; margin:0 auto; font-size: 20px;">
 
-<table style="width: 90%; margin:0 auto; font-size: 20px;" >
-  <caption><b>팀원모집 커뮤니티</b>
+<caption><b class="comulist">커뮤니티</b>
+<h6></h6>
+
   <br>
-  <button type="button" class="btn btn-success"
-style="margin-left: 900px; width: 100px; background: #B4C3FF;" 
+  <button type="button"
 onclick="location.href='index.jsp?container=community/insertform.jsp'"><span class="glyphicon glyphicon-pencil">
-</span>글추가</button></style> 
+</span>글추가</button> 
 </caption>
-  <br>
-    <tr bgcolor="#skyblue;">
-      <th width="70">번호</th>
-      <th width="370">제목</th>
-      <th width="100">작성자</th>
-      <th width="170">작성일</th>
-      <th width="70">조회</th>
-      <th width="70">추천수</th>
+  <thead>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>작성일</th>
+      <th>조회</th>
+      <th>추천수</th>
     </tr>
-    
+  </thead>
+  <tbody>
     <%
     if(totalCount==0)
     {%>
@@ -108,7 +188,7 @@ onclick="location.href='index.jsp?container=community/insertform.jsp'"><span cla
     	for(CommunityDto dto:list)
     	{%>
     		<tr>
-    		  <td align="center"><%=no-- %></td>
+    		  <td align="center" ><%=no-- %></td>
     		  <td>
     		  <a href="index.jsp?container=community/detail.jsp?bnum=<%=dto.getBnum()%>&currentPage=<%=currentPage%>">
     		  <%=dto.getSubject()%></a>
@@ -134,16 +214,13 @@ onclick="location.href='index.jsp?container=community/insertform.jsp'"><span cla
 	       		     
 <%     }
     %>
-    
-    
+   
+  </tbody>
 </table>
-
-
-
 <!-- 페이징처리 -->
 
-<div style="width: 500px; text-align: center;" class="container">
-  <ul class="pagination">
+<div style="text-align: center; margin:0 center;" >
+  <ul class="pagination my">
   	
   	<%
   	//이전
@@ -179,7 +256,6 @@ onclick="location.href='index.jsp?container=community/insertform.jsp'"><span cla
   	
   </ul>
 </div>
-
 
 </div>
 </body>

@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Insert title here</title>
-    <style type="text/css">
+<style type="text/css">
+
 body {
 		background-color:cyan;
 	}    
@@ -43,6 +44,7 @@ input[id*="answer"] + label + div {
 input[id*="answer"] + label + div p{
 	display:inline-block;
 	padding:20px;
+	vertical-align: middle;
 }
 
 input[id*="answer"]:checked + label + div {max-height:100px;}

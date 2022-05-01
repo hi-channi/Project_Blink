@@ -17,7 +17,7 @@ enctype="multipart/form-data">
 		
 		
 		<tr>
-		<th style="width:100px;" bgcolor="#ddd">제목</th>
+		<th style="width:100px, text-align: center;" bgcolor="#ddd">제목</th>
 		<td>
 		<input type="text" name="subject" class="form-control"
 		placeholder="subject" required="required">

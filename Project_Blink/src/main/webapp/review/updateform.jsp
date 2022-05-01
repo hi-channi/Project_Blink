@@ -29,7 +29,7 @@ System.out.println(image);
 <title>Insert title here</title>
 </head>
 <body>
-<form action="index.jsp?container=review/updateaction.jsp" method="post"
+<form action="review/updateaction.jsp" method="post"
 enctype="multipart/form-data">
    <table class="table table-bordered" style="width: 500px;">
       
