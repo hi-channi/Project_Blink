@@ -27,12 +27,12 @@ button{
 table td{
 	text-align: center;
 	background-color: #e0ffff;
-	font-size: 14pt;
+	font-size: 12pt;
 	cursor: pointer;
 }
 table th{
 	text-align: center;
-	font-size: 16pt;
+	font-size: 14pt;
 }
 @import 'https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400';
 
@@ -313,7 +313,7 @@ Map<ContestDto,Integer> dDayMap=new HashMap<ContestDto,Integer>();
   	  <section>
       <h2>전체</h2>
       <table class="table table-bordered" id="전체">
-<caption style="font-size: 22pt;">전체 공모전</caption>
+<caption style="font-size: 20pt;">전체 공모전</caption>
 	<tr class="all">
 		<th>회원번호</th>
 		<th>아이디</th>
@@ -367,7 +367,7 @@ Map<ContestDto,Integer> dDayMap=new HashMap<ContestDto,Integer>();
    	  <section>
       <h2>아이디어/마케팅</h2>
       <table class="table table-bordered" id="아이디어/마케팅">
-	<caption style="font-size: 22pt;">아이디어/마케팅</caption>
+	<caption style="font-size: 20pt;">아이디어/마케팅</caption>
 	<tr class="all">
 		<th>회원번호</th>
 		<th>아이디</th>
@@ -423,7 +423,7 @@ Map<ContestDto,Integer> dDayMap=new HashMap<ContestDto,Integer>();
    	  <section>
       <h2>아이디어/마케팅</h2>
       <table class="table table-bordered" id="디자인/웹툰/UCC">
-	<caption style="font-size: 22pt;">디자인/웹툰/UCC</caption>
+	<caption style="font-size: 20pt;">디자인/웹툰/UCC</caption>
 	<tr class="all">
 		<th>회원번호</th>
 		<th>아이디</th>
@@ -482,7 +482,7 @@ Map<ContestDto,Integer> dDayMap=new HashMap<ContestDto,Integer>();
       <section>
       <h2>아이디어/마케팅</h2>
       <table class="table table-bordered" id="문학/예술/과학">
-	<caption style="font-size: 22pt;">문학/예술/과학</caption>
+	<caption style="font-size: 20pt;">문학/예술/과학</caption>
 	<tr class="all">
 		<th>회원번호</th>
 		<th>아이디</th>
@@ -535,7 +535,7 @@ Map<ContestDto,Integer> dDayMap=new HashMap<ContestDto,Integer>();
 </table>
       </section>
       
-      <%
+      <% 
       String loginId=(String)session.getAttribute("loginId");
       String loginOk=(String)session.getAttribute("loginOk");
       MemberDao mdao=new MemberDao();
@@ -546,11 +546,11 @@ Map<ContestDto,Integer> dDayMap=new HashMap<ContestDto,Integer>();
     	<button type="button" class="btn btn-info"
 onclick="location.href='index.jsp?container=gongmoa/insertgong.jsp'">공모전 등록</button>
 <button type="button" class="btn btn-danger"
-onclick="location.href='index.jsp?container=gongmoa/test.jsp'">test</button>  
+onclick="location.href='index.jsp?container=gongmoa/test.jsp'">포스터 보기</button>  
       <%}else{%>
     	  
     	  <button type="button" class="btn btn-danger"
-onclick="location.href='index.jsp?container=gongmoa/test.jsp'">test</button>
+onclick="location.href='index.jsp?container=gongmoa/test.jsp'">포스터 보기</button>
       <%}
       %>
   </div>

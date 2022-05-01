@@ -11,12 +11,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style type="text/css">
 .image{
-	width: 500px;
-	height: 600px;
+	width: 600px;
+	height: 700px;
 }
 table{
-	margin-left: 30px;
-	margin-bottom: 300px;
+	margin-left: 5px;
 }
 
 </style>
@@ -37,7 +36,7 @@ dto.setId(loginid);
 dao.upReadCount(connum);
 %>
 <body>
-	<table style="width: 900px;" class="table table-bordered">
+	<table style="width: 1060px; height: 700px;" class="table table-bordered">
 	<tr>
 		<td style="width: 500px;">
 		<div>
@@ -46,9 +45,16 @@ dao.upReadCount(connum);
 		</td>
 		<td style="width: 600px;">
 		<h3>공모분야: &nbsp;<%=dto.getCategory() %></h3>	
+		<h3>공모전 개요: 포스터 참조</h3>
 		<h3>공모전 주제: &nbsp;<%=dto.getSubject()%></h3>
 		<h3>접수 기간: &nbsp;<%=dto.getStart_day() %> ~ <%=dto.getFinally_day() %>
 		</h3>
+		<h3>공모전 내용: 포스터 참조</h3>
+		<h3>신청 방법: 포스터 참조 </h3>
+		<h3>신청 양식: 포스터 참조</h3>
+		<h3>자격 요건: 누구나 가능</h3>
+		<h3>시상 내역: 포스터 참조</h3>
+		<h3>문의사항: 010-0000-0000</h3>
 		<div>
 		<br>
 		<button type="button" class="btn btn-success"

@@ -35,8 +35,8 @@
 			<td>
 				<select style="width: 200px;" name="category"
 				class="form-control" required="required">
-				<option value="아이디어/기획" selected="selected">아이디어/기획</option>
-				<option value="환경/에너지" >환경/에너지</option>
+				<option value="아이디어/마케팅" selected="selected">아이디어/마케팅</option>
+				<option value="디자인/웹툰/UCC" >디자인/웹툰/UCC</option>
 				<option value="문학/예술/과학">문학/예술/과학</option>
 				</select>
 			</td>

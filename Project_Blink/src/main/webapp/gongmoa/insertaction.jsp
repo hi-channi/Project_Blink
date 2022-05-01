@@ -23,8 +23,6 @@ String realPath=getServletContext().getRealPath("/images");
 
 int uploadSize=1024*1024*2;
 MultipartRequest multi=null;
-SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-
 
 try{
 	multi=new MultipartRequest(request,realPath,uploadSize,"utf-8",
@@ -36,9 +34,7 @@ try{
 	String image=multi.getFilesystemName("image");
 	String content=multi.getParameter("content");
 	String start_day=multi.getParameter("start_day");
-	System.out.println(start_day);
 	String finally_day=multi.getParameter("finally_day");
-	System.out.println(finally_day);
 	
 	//dto에 저장하기
 	ContestDto dto=new ContestDto();
@@ -56,17 +52,18 @@ try{
 	
 	dto.setNickname(loginId);
 	
-	
 	//dao선언
 	ContestDao dao=new ContestDao();
 	//dao insert
 	dao.insertContest(dto);
 	//리스트로 이동
 	response.sendRedirect("../index.jsp?container=gongmoa/gongmoaform.jsp");
-	
+
 }catch(Exception e){
 	
 }
+
+
 
 %>
 
