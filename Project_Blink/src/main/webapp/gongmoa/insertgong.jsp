@@ -13,7 +13,7 @@
 </head>
 <body>
 <div>
-	<form action="index.jsp?container=gongmoa/insertaction.jsp" method="post" enctype="multipart/form-data"
+	<form action="gongmoa/insertaction.jsp" method="post" enctype="multipart/form-data"
 	class="form-inline">
 	<table class="table table-bordered" style="width: 1100px;">
 		<caption><b>공모전 등록</b></caption> 

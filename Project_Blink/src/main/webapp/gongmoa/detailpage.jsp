@@ -16,6 +16,8 @@
 }
 table{
 	margin-left: 5px;
+	font-family: "hi melody";
+	font-size: 14pt;
 }
 
 </style>
@@ -55,6 +57,7 @@ dao.upReadCount(connum);
 		<h3>자격 요건: 누구나 가능</h3>
 		<h3>시상 내역: 포스터 참조</h3>
 		<h3>문의사항: 010-0000-0000</h3>
+		<h3>이메일: example@gongmoa.com</h3>
 		<div>
 		<br>
 		<button type="button" class="btn btn-success"

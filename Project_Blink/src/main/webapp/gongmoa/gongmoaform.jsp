@@ -26,8 +26,9 @@ button{
 }
 table td{
 	text-align: center;
+	font-family: "hi melody";
 	background-color: #e0ffff;
-	font-size: 12pt;
+	font-size: 14pt;
 	cursor: pointer;
 }
 table th{
