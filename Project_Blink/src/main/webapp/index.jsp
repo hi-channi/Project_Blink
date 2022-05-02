@@ -139,7 +139,7 @@ div.bannermenu:hover {
 			<br>
 			<br>
 			<div>
-				<div class="bannermenu" onclick="location.href='#'">정보수정</div><br>
+				<div class="bannermenu" onclick="location.href='../member/updateform.jsp'">정보수정</div><br>
 				<div class="bannermenu" onclick="location.href='#'">스크랩북</div><br>
 				<div class="bannermenu" onclick="location.href='#'">캘린더</div>
 			</div>
