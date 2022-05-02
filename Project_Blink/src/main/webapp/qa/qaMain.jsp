@@ -61,26 +61,28 @@ $(function(){
 
 
 </script>
-
 </head>
 <body>
 
 <% //로그인 상태 확인 및 처리됬는지 확인
-String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
-String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
-	
-MemberDao dao = new MemberDao();
-String id = dao.getId(loginId);
-String nickname = dao.getNickname(id);
-String membertype = dao.getMembertype(id);
+	String loginOk=(String)session.getAttribute("loginOk"); //세션가져오기
+	String loginId=(String)session.getAttribute("loginId"); //이메일 가져오기
+		
+	MemberDao dao = new MemberDao();
+	String id = dao.getId(loginId);
+	String nickname = dao.getNickname(id);
+	String membertype = dao.getMembertype(id);
 %>
 
 <div id="main" style="height: 100%; width:100%;" >
 
 <div class="accordion">
 <input type="checkbox" id="answer1">
-<label for="answer1">강진님은 누구인가요?<em></em></label>
-<div><p>쌍용 프로젝트 2조의 조장님이시고 오리 이모티콘을 자주쓰시는 분입니다.</p></div>
+<label for="answer1">Q&A 게시판의 사용 방법을 알려주세요<em></em></label>
+<div><p>Q&A 게시판은 공모전에 대한 더 자세한 정보나 팁을 공유하기 위해 만들어졌습니다.<br>
+커뮤니티 게시판은 누구나 자유롭게 글/댓글 작성을 할 수 있지만 Q&A 게시판은 일반 회원만 질문이 가능하며<br>
+답변은 
+</p></div>
 <input type="checkbox" id="answer2">
 <label for="answer2">주찬님은 누구인가요?<em></em></label>
 <div><p>SQL이랑 Git잘알 이셔서 초반에 세팅하실때 도움을 정말 많이 주신분입니다. </p></div>
@@ -103,9 +105,9 @@ onclick="location.href='index.jsp?container=qa/questionList.jsp'">Q&A목록</but
 
 <tr>
 <%
-if(loginOk!=null && membertype.equals("일반회원")){%>
-<button type="button" class="btn btn-info btn-md"
-id="btnquestion">질문하기</button>
+	if(loginOk!=null && membertype.equals("일반회원")){%>
+	<button type="button" class="btn btn-info btn-md"
+	id="btnquestion">질문하기</button>
 <%} 
 %>
 </tr>

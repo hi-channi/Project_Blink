@@ -26,12 +26,12 @@ dto.setSubject(request.getParameter("subject"));
 dto.setContent(request.getParameter("content"));
 
 String bnum=request.getParameter("bnum");
-
+System.out.println(bnum);
 CommunityDao dao=new CommunityDao();
 dao.updateCommunity(dto);
 
 //목록
-response.sendRedirect("../index.jsp?container=community/communitylist.jsp?bnum="+bnum+"&currentPage="+currentPage);
+response.sendRedirect("../index.jsp?container=community/communitylist.jsp");
 %>
 </body>
 </html>

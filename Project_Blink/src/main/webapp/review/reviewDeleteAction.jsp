@@ -18,9 +18,9 @@
 <%
 //num,pass
 String rnum=request.getParameter("rnum");
-
+String currentPage=request.getParameter("currentPage");
 ReviewDao dao=new ReviewDao();
-
+dao.deleteReview(rnum);
 //게시글 지우기 전에 업로드 이미지 지우기
 	String image=dao.getData(rnum).getImage();
 	//System.out.println(rnum);
@@ -31,15 +31,16 @@ ReviewDao dao=new ReviewDao();
 	
 		//파일 생성
 		File file=new File(uploadPath+"\\"+image);
+		file.delete();
 		//System.out.println(file);
 		
-		//파일 삭제
+		/* //파일 삭제
 		if(file.exists()) {//파일존재하면 
 			file.delete();
 			dao.deleteReview(rnum); //삭제
 		}else{
 			dao.deleteReview(rnum); //삭제
-		}
+		} */
 		
 			
 	//리스트로 이동

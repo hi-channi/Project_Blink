@@ -1,5 +1,3 @@
-<%@page import="java.util.Calendar"%>
-<%@page import="java.util.Date"%>
 <%@page import="data.dao.MemberDao"%>
 <%@page import="data.dao.CommunityDao"%>
 <%@page import="data.dto.CommunityDto"%>
@@ -20,86 +18,7 @@
 	justify-content:center;
 	
 }
-*, *:before, *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Noto Sans KR';
 
-}
-
-table {
-  border-radius: 0.25em;
-  border-collapse: collapse;
-  margin: 1em;
-  width: 90%;
-  margin: auto;
-  font-size: 20px;
-  font-family: 'Noto Sans KR';
-}
-th {
-  border-bottom: 1px solid #364043;
-  color: #3498db;
-  letter-spacing:7px;
-  text-indent:7px;
-  font-size: 0.9em;
-  font-weight: 600;
-  padding: 0.5em 1em;
-  text-align: center !important;
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
-}
-td {
-  color: black;
-  font-weight: 400;
-  font-size: 0.8em;
-  padding: 0.65em 1em;
-  text-align: center;
-  border-bottom: 1px solid #E6E6E6;
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
-}
-tbody tr {
-  transition: background 0.25s ease;
-}
-tbody tr:hover {
-  background: #DEBDFA;
-  color: white;
-}
-
-button {
-	width: 100px;
-	background: #B4C3FF;
-	float: right;
-}
-
-.comulist {
-   width: 100%;
-   text-align : center;
-   border: 0;   
-   outline: none;
-   background-position: center;
-   background-size: 200%;
-   color: #3498db;
-   letter-spacing:7px;
-   text-indent:7px;
-   font-size:40px;
-}
-
-a{
-	text-decoration-line: none !important;
-}
-
-.my.pagination > .active > a,
-.my.pagination > .active > span, 
-.my.pagination > .active > a:hover, 
-.my.pagination > .active > span:hover, 
-.my.pagination > .active > a:focus, 
-.my.pagination > .active > span:focus {
-  background: #8e44ad;
-  border-color: #8e44ad;
-  color: white !important;
-}
 </style>
 
 </head>
@@ -152,16 +71,14 @@ List<CommunityDto> list = dao.getList(start, perPage);
 //각 글앞에 붙일 시작번호 구하기
 //총글이 20개면? 1페이지 20 2페이지 15부터 출력해서 1씩 감소
 no = totalCount - (currentPage - 1) * perPage;
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 
-// 포맷변경 ( 년월일 시분초)
-SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm"); 
- 
 %>
 
 <body>
 <!--게시판 출력  -->
-<div id="main" style="min-height: 1000px; max-height:100%; width:100%;">
+<div id="main" style="height: 1000px;">
 <br><br>
 
 <table style="width: 90%; margin:0 auto; font-size: 20px;" >
@@ -173,7 +90,7 @@ onclick="location.href='index.jsp?container=community/insertform.jsp'"><span cla
 </span>글추가</button></style> 
 </caption>
   <br>
-    <tr >
+    <tr bgcolor="#skyblue;">
       <th width="70">번호</th>
       <th width="370">제목</th>
       <th width="100">작성자</th>
@@ -228,7 +145,7 @@ onclick="location.href='index.jsp?container=community/insertform.jsp'"><span cla
 
 <!-- 페이징처리 -->
 
-<div style="text-align: center; margin:0 center;">
+<div style="width: 500px; text-align: center;" class="container">
   <ul class="pagination">
   	
   	<%
