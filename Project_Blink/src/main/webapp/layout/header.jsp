@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ html {
 
 .logoimg {
 display: inline-block;
-	padding: 20px 0 20px 20px;
+	padding: 15px 0 0 30px;
 }
 
 nav {
@@ -81,10 +83,14 @@ a:
 
 </style>
 </head>
+<%
+	String loginOk=(String)session.getAttribute("loginOk");
+	String loginId=(String)session.getAttribute("loginId");
+%>
 <body>
 <!-- 로고 영역 -->
 <div class="logoimg">
-<img alt="" src="images/default-logo.png">
+<img alt="" src="images/title_logo.png" height="55" style="cursor: pointer;" onclick="location.href='index.jsp?container=layout/container.jsp'">
 </div>
 
 <!-- 메뉴 영역 -->
@@ -94,28 +100,38 @@ a:
       <a href="index.jsp?container=layout/container.jsp" class="main">Home</a>
     </li>
     <li>
-      <a href="#">공모전</a>
+      <a href="index.jsp?container=gongmoa/gongmoaform.jsp">공모전</a>
     </li>
     <li>
-      <a href="#">Q&A</a>
+      <a href="index.jsp?container=qa/qaMain.jsp">Q&A</a>
     </li>
     <li>
-      <a href="#">커뮤니티</a>
+      <a href="index.jsp?container=community/communitylist.jsp">커뮤니티</a>
     </li>
     <li>
-      <a href="#">공모전 후기</a>
+      <a href="index.jsp?container=review/reviewlist.jsp">공모전 후기</a>
     </li>
-    <li>
-      <a href="index.jsp?container=testhome.jsp">마이페이지</a>
-    </li>
-    <li>
-      <a href="#" class="login">로그인</a>
-    </li>
+	<%
+		// 로그인 상태: 마이페이지, 비로그인 상태: 회원가입
+		if (loginOk == null || loginOk.equals("")) {
+		%>
+		<li>
+			<a href="index.jsp?container=member/signup.jsp">회원가입</a>
+		</li>
+		<li>
+      		<a href="login/login.jsp" class="login">로그인</a>
+		</li>
+		<% } else {
+		%>
+		<li>
+      		<a href="login/logoutproc.jsp" class="login">로그아웃</a>
+		</li>
+		<% }
+	%>
     <li>
     	<span style="padding: 7px;"></span>
     </li>
   </ul>
 </nav>
-
 </body>
 </html>
