@@ -53,6 +53,39 @@ $(function(){
 });
 
 </script>
+<style type="text/css">
+span.gesipanname {
+   width: 50px;
+   height: 10px;
+   width: 50%;
+   text-align : center !important;
+   border: 0;	
+   outline: none;
+   background: linear-gradient(125deg, #81ecec, #6c5ce7, #81ecec) !important;
+   background-position: center;
+   background-size: 100%;
+   color: #FAFAFA !important;
+   font-size: 17pt;
+   letter-spacing: 2px;
+   transition: 0.4s;
+   margin-left: 210px;
+   margin-bottom: 10px;
+
+
+}
+
+.content {
+   font-size: 20pt;
+   text-align: left;
+   background-color:#F2F2F2;
+   text-align: left;
+   width:630px;
+   height: 400px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+</style>
 </head>
 <%
 String loginid=(String)session.getAttribute("loginId");
@@ -75,8 +108,13 @@ dto.setId(myid);
 %>
 <body>
 <div id="main" style="height: 100%;">
+
+	<span class="gesipanname">공모전 후기</span>
+	<br>
+	<br>
+
 <table class="table table-condensed" style="font-size: 18pt;">
-	<caption><b>공모전 후기<br><br></b></caption>
+
 		<tr style="font-size:10pt;">
 			<td>
 			<b><%=dto.getSubject() %></b><br>
@@ -119,11 +157,13 @@ dto.setId(myid);
 		<td colspan="2">
 			
 				<br><br>
+				<pre class="content">
 				<!-- 이미지 클릭하면 새창에 원래 사이즈로 보기 -->
 				<img alt="" src="save/<%=dto.getImage()%>"
 				style="max-width: 400px; margin-left: auto; margin-right: auto; display: block;">
 				<br><br>
 					<%=dto.getContent().replace("\n","<br>") %>
+			</pre>
 			</td> 
 			
 		</tr>

@@ -9,27 +9,30 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Insert title here</title>
-    <style type="text/css">
-body {
-		background-color:cyan;
-	}    
+    <style type="text/css">  
     
 input[id*="answer"]{
 	display:none;
 }
 
 input[id*="answer"] + label{
-	padding:20px;
-	border: 1px solid cyan;
-	border-bottom: 0;
+	padding: 15px;
+	padding-top:20px;
+	padding-bottom:7px;
+	border: 2px solid #9F81F7;
+	border-bottom: 3px solid #9F81F7;
 	color:white;
-	font-size:15px;
-	background: #2cccc4;
+	font-size:18px;
+	background: #BCA9F5; <!--BCA9F5 -->
 	cursor:pointer;
 	position:relative;
-	height:60px;
-	width:1100px;
-	vertical-align: bottom;
+	height:70px;
+	width:100%;
+	margin-top: auto;
+	margin-bottom: auto;
+
+
+	
 }
 
 input[id*="answer"] + label + div {
@@ -37,6 +40,7 @@ input[id*="answer"] + label + div {
 	transition: all .4s;
 	overflow:hidden;
 	background:white;
+	border: 2px solid #9F81F7;
 	font-size:13px;
 }
 
@@ -75,7 +79,7 @@ String nickname = dao.getNickname(id);
 String membertype = dao.getMembertype(id);
 %>
 
-<div id="main" style="height: 100%; width:100%;" >
+<div id="main" style="min-height: 1000px; max-height:100%; width:1000px;" >
 
 <div class="accordion">
 <input type="checkbox" id="answer1">

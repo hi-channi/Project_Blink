@@ -8,7 +8,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+th.sub {
+
+text-align: center;
+
+}
+
+
+</style>
 </head>
+
+
 
 <body>
 <form action="questionAction.jsp" method="post"
@@ -17,10 +28,10 @@ enctype="multipart/form-data">
 		
 		
 		<tr>
-		<th style="width:100px;" bgcolor="#ddd">제목</th>
+		<th id=sub; style="width:100px;" bgcolor="cyan;" >제목</th>
 		<td>
 		<input type="text" name="subject" class="form-control"
-		placeholder="subject" required="required">
+		placeholder="제목을 입력해 주세요." required="required">
 		</td>
 		</tr>
 
@@ -33,8 +44,8 @@ enctype="multipart/form-data">
 
 		<tr>
 		<td colspan="2">
-		<textarea style="width:500px; height:200px;"
-		class="form-control" name="content" required="required">
+		<textarea style="width:500px; height:200px; resize: none;"
+		class="form-control" name="content" required="required" >
 		</textarea>
 		</td>
 		</tr>

@@ -309,7 +309,7 @@ Map<ContestDto,Integer> dDayMap=new HashMap<ContestDto,Integer>();
    %>
 
   <div class="slider"><div class="indicator"></div></div>
-  <div id="main" style="height: 1000px;" class="content">
+  <div id="main" style="min-height: 1000px; max-height: auto;" class="content">
   	  <section>
       <h2>전체</h2>
       <table class="table table-bordered" id="전체">
